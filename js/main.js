@@ -17,7 +17,19 @@ const mattressData = {
         rating: 4.8,
         bestFor: "Back sleepers, couples",
         sleepPosition: ["back", "combination"],
-        tagline: "Engineered for the way you sleep"
+        tagline: "Engineered for the way you sleep",
+        warranty: "10 years limited",
+        trial: "100 nights",
+        cooling: "AirScape breathable foam",
+        motionIsolation: "Excellent",
+        edgeSupport: "Good",
+        sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King"],
+        shipping: "Free shipping, compressed in a box",
+        scores: { type: 8, support: 9, value: 9, price: 7, materials: 8 },
+        accentColor: "#2C5F8A",
+        expertSummary: "The Casper Original features Zoned Support that provides targeted pressure relief.",
+        customerRatingCount: 429,
+        keyFeatures: ["Cooling", "Zoned Support", "Medium-firm", "Motion Isolation"]
     },
     "Leesa": {
         logo: "assets/images/brands/leesa-logo.png",
@@ -32,7 +44,19 @@ const mattressData = {
         rating: 4.7,
         bestFor: "All sleep positions",
         sleepPosition: ["back", "side", "stomach", "combination"],
-        tagline: "Sleep better, do good"
+        tagline: "Sleep better, do good",
+        warranty: "10 years",
+        trial: "100 nights",
+        cooling: "Cooling top layer, breathable foam",
+        motionIsolation: "Excellent",
+        edgeSupport: "Very Good",
+        sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King"],
+        shipping: "Free shipping & returns",
+        scores: { type: 8, support: 9, value: 9, price: 8, materials: 8 },
+        accentColor: "#4A6A5E",
+        expertSummary: "Leesa combines three premium foam layers for universal comfort.",
+        customerRatingCount: 272,
+        keyFeatures: ["Pressure Relief", "Universal Comfort", "Cooling Top", "Eco-friendly"]
     },
     "Purple": {
         logo: "assets/images/brands/purple-logo.png",
@@ -47,7 +71,19 @@ const mattressData = {
         rating: 4.6,
         bestFor: "Hot sleepers, combo sleepers",
         sleepPosition: ["side", "combination"],
-        tagline: "No pressure, all comfort"
+        tagline: "No pressure, all comfort",
+        warranty: "10 years",
+        trial: "100 nights",
+        cooling: "Purple Grid hyper-elastic polymer",
+        motionIsolation: "Very Good",
+        edgeSupport: "Good",
+        sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King", "Split King"],
+        shipping: "Free shipping",
+        scores: { type: 9, support: 8, value: 8, price: 6, materials: 9 },
+        accentColor: "#6A1B9A",
+        expertSummary: "The Purple Grid flexes under pressure points while supporting the rest of the body.",
+        customerRatingCount: 512,
+        keyFeatures: ["Hyper-Elastic Grid", "Cooling", "Pressure Relief", "Durable"]
     },
     "Nest Bedding": {
         logo: "assets/images/brands/nest-bedding-logo.png",
@@ -62,7 +98,19 @@ const mattressData = {
         rating: 4.9,
         bestFor: "Eco-conscious shoppers",
         sleepPosition: ["back", "side", "stomach", "combination"],
-        tagline: "Handcrafted in the USA"
+        tagline: "Handcrafted in the USA",
+        warranty: "Lifetime",
+        trial: "365 nights",
+        cooling: "Natural latex, breathable cover",
+        motionIsolation: "Good",
+        edgeSupport: "Excellent",
+        sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King"],
+        shipping: "Free white glove delivery",
+        scores: { type: 9, support: 9, value: 9, price: 7, materials: 10 },
+        accentColor: "#2E7D64",
+        expertSummary: "Nest Bedding offers customizable firmness and organic materials.",
+        customerRatingCount: 348,
+        keyFeatures: ["Organic", "Customizable", "Eco-friendly", "Handcrafted"]
     },
     "Saatva": {
         logo: "assets/images/brands/saatva-logo.png",
@@ -77,7 +125,19 @@ const mattressData = {
         rating: 4.9,
         bestFor: "Back pain sufferers",
         sleepPosition: ["back", "stomach"],
-        tagline: "Luxury without the markup"
+        tagline: "Luxury without the markup",
+        warranty: "Lifetime",
+        trial: "365 nights",
+        cooling: "Organic cotton cover, breathable coils",
+        motionIsolation: "Fair",
+        edgeSupport: "Excellent",
+        sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King", "Split King"],
+        shipping: "Free white glove delivery",
+        scores: { type: 8, support: 10, value: 9, price: 7, materials: 9 },
+        accentColor: "#B76E2E",
+        expertSummary: "Saatva's coil-on-coil construction provides exceptional lumbar support.",
+        customerRatingCount: 892,
+        keyFeatures: ["Lumbar Support", "Luxury", "Organic", "Spinal Alignment"]
     },
     "Helix": {
         logo: "assets/images/brands/helix-logo.png",
@@ -92,7 +152,19 @@ const mattressData = {
         rating: 4.7,
         bestFor: "Personalized comfort",
         sleepPosition: ["back", "side", "stomach", "combination"],
-        tagline: "Made for you"
+        tagline: "Made for you",
+        warranty: "10 years",
+        trial: "100 nights",
+        cooling: "Gel-infused foam, breathable cover",
+        motionIsolation: "Good",
+        edgeSupport: "Very Good",
+        sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King"],
+        shipping: "Free shipping",
+        scores: { type: 9, support: 9, value: 8, price: 8, materials: 8 },
+        accentColor: "#00A86B",
+        expertSummary: "Helix offers a personalized sleep experience with a quiz that matches you.",
+        customerRatingCount: 567,
+        keyFeatures: ["Personalized", "Hybrid", "Cooling", "Custom Firmness"]
     },
     "Tempur-Pedic": {
         logo: "assets/images/brands/tempur-pedic-logo.png",
@@ -107,7 +179,19 @@ const mattressData = {
         rating: 4.8,
         bestFor: "Pressure point relief",
         sleepPosition: ["back", "side"],
-        tagline: "The original memory foam"
+        tagline: "The original memory foam",
+        warranty: "10 years",
+        trial: "90 nights",
+        cooling: "Tempur-APR+ cooling",
+        motionIsolation: "Superior",
+        edgeSupport: "Excellent",
+        sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King", "Split King"],
+        shipping: "White glove delivery",
+        scores: { type: 9, support: 10, value: 7, price: 4, materials: 10 },
+        accentColor: "#8B4513",
+        expertSummary: "Tempur-Pedic's proprietary memory foam conforms to your body.",
+        customerRatingCount: 1245,
+        keyFeatures: ["Memory Foam", "Pressure Relief", "Motion Isolation", "Premium"]
     },
     "DreamCloud": {
         logo: "assets/images/brands/dreamcloud-logo.png",
@@ -122,7 +206,19 @@ const mattressData = {
         rating: 4.7,
         bestFor: "Luxury on a budget",
         sleepPosition: ["back", "stomach"],
-        tagline: "Luxury you can afford"
+        tagline: "Luxury you can afford",
+        warranty: "Lifetime",
+        trial: "365 nights",
+        cooling: "Gel memory foam, cashmere cover",
+        motionIsolation: "Good",
+        edgeSupport: "Excellent",
+        sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King"],
+        shipping: "Free white glove delivery",
+        scores: { type: 8, support: 8, value: 9, price: 9, materials: 8 },
+        accentColor: "#4B6A9B",
+        expertSummary: "DreamCloud brings luxury hybrid construction at an accessible price point.",
+        customerRatingCount: 734,
+        keyFeatures: ["Luxury Hybrid", "Cashmere Cover", "Lifetime Warranty", "Value"]
     }
 };
 
@@ -216,7 +312,7 @@ function renderMattressGrid() {
 }
 
 // ============================================
-// RENDER TOP COMPARISONS with Hover Text Effect
+// RENDER TOP COMPARISONS with Hover Text Effect - FIXED
 // ============================================
 function renderTopComparisons() {
     const grid = document.getElementById('comparisonsGrid');
@@ -231,13 +327,14 @@ function renderTopComparisons() {
             <div class="comparison-tag" data-m1="${comp.brand1}" data-m2="${comp.brand2}">
                 <div class="logo-wrapper">
                     <img src="${brand1.logo}" alt="${comp.brand1}" class="brand-logo-tag" onerror="this.style.display='none'">
+                    <span style="margin: 0 4px;">${comp.brand1}</span>
                 </div>
-                <div class="text-wrapper">${comp.brand1}</div>
-                <span>VS</span>
+                <span class="vs-text">VS</span>
                 <div class="logo-wrapper">
                     <img src="${brand2.logo}" alt="${comp.brand2}" class="brand-logo-tag" onerror="this.style.display='none'">
+                    <span style="margin: 0 4px;">${comp.brand2}</span>
                 </div>
-                <div class="text-wrapper">${comp.brand2}</div>
+                <div class="text-wrapper">Compare Now →</div>
             </div>
         `;
     }).join('');
@@ -404,7 +501,7 @@ function updateScoreCards() {
 }
 
 // ============================================
-// UPDATE DEEP COMPARISON BUTTON
+// UPDATE DEEP COMPARISON BUTTON - FIXED URL
 // ============================================
 function updateDeepComparisonButton() {
     const deepContainer = document.getElementById('deepComparisonContainer');
@@ -414,7 +511,9 @@ function updateDeepComparisonButton() {
         if (deepContainer) {
             deepContainer.style.display = 'block';
             if (deepBtn) {
-                deepBtn.href = `detailed-comparison.html?compare=${encodeURIComponent(selectedSlotA)}|${encodeURIComponent(selectedSlotB)}`;
+                const compareUrl = `detailed-comparison.html?compare=${encodeURIComponent(selectedSlotA)}|${encodeURIComponent(selectedSlotB)}`;
+                deepBtn.href = compareUrl;
+                console.log('Deep comparison URL set to:', compareUrl);
             }
         }
     } else {

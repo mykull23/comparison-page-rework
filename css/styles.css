@@ -1182,3 +1182,138 @@ th {
         font-size: 14px;
     }
 }
+
+/* Top Comparisons Grid with Hover Text Effect - FIXED */
+.comparisons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+.comparison-tag {
+    background: var(--white);
+    padding: 16px 24px;
+    border-radius: 60px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    border: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    min-height: 70px;
+}
+
+.comparison-tag .logo-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    font-weight: 600;
+    color: var(--heading-color);
+}
+
+.comparison-tag .logo-wrapper span {
+    font-size: 14px;
+}
+
+.comparison-tag .vs-text {
+    font-weight: 800;
+    color: #5E00FF;
+    transition: color 0.3s ease;
+}
+
+.comparison-tag .text-wrapper {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.9);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: white;
+    white-space: nowrap;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    background: transparent;
+    padding: 8px 16px;
+    border-radius: 40px;
+}
+
+.comparison-tag:hover {
+    background: var(--gradient-primary);
+    border-color: transparent;
+}
+
+.comparison-tag:hover .logo-wrapper {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.comparison-tag:hover .vs-text {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.comparison-tag:hover .text-wrapper {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.brand-logo-tag {
+    width: 60px;
+    height: auto;
+    max-height: 28px;
+    object-fit: contain;
+    transition: var(--transition-fast);
+}
+
+/* Responsive fix for mobile */
+@media (max-width: 768px) {
+    .comparisons-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .comparison-tag {
+        min-height: 80px;
+        padding: 12px 20px;
+        flex-wrap: wrap;
+    }
+    
+    .comparison-tag .text-wrapper {
+        white-space: normal;
+        text-align: center;
+        font-size: 12px;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+    
+    .brand-logo-tag {
+        width: 45px;
+        max-height: 24px;
+    }
+    
+    .comparison-tag .logo-wrapper span {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .comparison-tag {
+        padding: 10px 16px;
+    }
+    
+    .comparison-tag .logo-wrapper {
+        gap: 4px;
+    }
+    
+    .brand-logo-tag {
+        width: 40px;
+    }
+}
