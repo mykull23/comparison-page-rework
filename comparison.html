@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>SleePare | Compare Mattresses Side by Side - Interactive Mattress Comparison Tool</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
     <!-- HERO SECTION -->
@@ -26,14 +29,15 @@
                         Perfect Match.
                     </h1>
                     <p class="animate-fade-in-up animation-delay-2">
-                        Stop guessing. Test premium online mattresses in-store and compare top brands with our interactive tool. 
+                        Stop guessing. Test premium online mattresses in-store and compare top brands with our
+                        interactive tool.
                         Feel the difference before you commit — because comfort shouldn't be a gamble.
                     </p>
                     <div class="hero-buttons animate-fade-in-up animation-delay-3">
                         <a href="#" class="btn-primary">Find a Store</a>
                         <a href="#" class="btn-outline">Shop Online</a>
                     </div>
-                    
+
                     <div class="stats-grid animate-fade-in-up animation-delay-4">
                         <div class="stat-item">
                             <div class="stat-number">4.9</div>
@@ -62,8 +66,9 @@
                         <div class="placeholder-content">
                             <div class="placeholder-icon">
                                 <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
-                                    <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                                    <path d="M8 12H16M12 8V16" stroke="currentColor" stroke-width="1.5"/>
+                                    <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor"
+                                        stroke-width="1.5" />
+                                    <path d="M8 12H16M12 8V16" stroke="currentColor" stroke-width="1.5" />
                                 </svg>
                             </div>
                             <p>Experience mattresses in-store</p>
@@ -75,7 +80,7 @@
         </div>
     </section>
 
-    <!-- INTERACTIVE COMPARISON TOOL - REDESIGNED -->
+    <!-- INTERACTIVE COMPARISON TOOL -->
     <section class="section comparison-tool-section">
         <div class="container">
             <div class="section-header">
@@ -118,7 +123,7 @@
                 <button id="resetFiltersSimple" class="btn-reset-simple">Reset</button>
             </div>
 
-            <!-- MAIN COMPARISON LAYOUT: CARDS + SCORES SIDE BY SIDE -->
+            <!-- MAIN COMPARISON LAYOUT: CARDS + COMPARISON SIDE BY SIDE -->
             <div class="comparison-layout">
                 <!-- Left: Mattress Cards Grid -->
                 <div class="mattress-cards-panel">
@@ -129,8 +134,22 @@
                 </div>
 
                 <!-- Right: Comparison Panel -->
+                <!-- Right: Comparison Panel -->
                 <div class="comparison-panel">
-                    <h3>Comparison</h3>
+                    <div class="comparison-panel-header">
+                        <h3>Comparison</h3>
+                        <button id="swapCompact" class="btn-swap-icon" title="Swap positions">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 3L20 7L16 11" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M4 7H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                <path d="M8 21L4 17L8 13" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M20 17H4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                            </svg>
+                        </button>
+                    </div>
                     <div class="comparison-slots-compact" id="comparisonSlotsCompact">
                         <div class="compact-slot" id="compactSlotA">
                             <div class="compact-slot-empty">
@@ -144,20 +163,26 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Score Cards (only visible when both selected) -->
                     <div class="score-cards-container" id="scoreCardsContainer" style="display: none;">
                         <div class="score-card" id="scoreCardA"></div>
                         <div class="score-card" id="scoreCardB"></div>
                     </div>
-                    
-                    <!-- Swap Button -->
-                    <div class="swap-container" id="swapContainer" style="display: none;">
-                        <button id="swapCompact" class="btn-swap-compact">Swap Positions</button>
+
+                    <!-- Deep Comparison Button (only visible when both selected) -->
+                    <div class="deep-comparison-container" id="deepComparisonContainer" style="display: none;">
+                        <a href="detailed-comparison.html" class="btn-primary btn-deep-comparison"
+                            id="deepComparisonBtn">
+                            View Detailed Comparison
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
     </section>
 
     <!-- 5 ELEMENTS SECTION -->
@@ -166,14 +191,16 @@
             <div class="section-header">
                 <div class="section-tag">Our Methodology</div>
                 <h2>The 5 Elements of Mattress Comparisons</h2>
-                <p>We rate every mattress based on these five core factors — so you can compare with clarity and confidence.</p>
+                <p>We rate every mattress based on these five core factors — so you can compare with clarity and
+                    confidence.</p>
             </div>
-            
+
             <div class="elements-grid">
                 <div class="element-card">
                     <div class="element-icon">1</div>
                     <h3>Mattress Type</h3>
-                    <p>Memory foam, hybrid, latex, innerspring — each offers unique feel and support for different sleepers.</p>
+                    <p>Memory foam, hybrid, latex, innerspring — each offers unique feel and support for different
+                        sleepers.</p>
                 </div>
                 <div class="element-card">
                     <div class="element-icon">2</div>
@@ -183,7 +210,8 @@
                 <div class="element-card">
                     <div class="element-icon">3</div>
                     <h3>Overall Value</h3>
-                    <p>Price vs. quality — real customer ratings and expert insights to ensure you get what you pay for.</p>
+                    <p>Price vs. quality — real customer ratings and expert insights to ensure you get what you pay for.
+                    </p>
                 </div>
                 <div class="element-card">
                     <div class="element-icon">4</div>
@@ -206,7 +234,8 @@
                 <div class="price-content">
                     <div class="section-tag">Budget Guide</div>
                     <h2>Price & Value: Find Your Sweet Spot</h2>
-                    <p>Mattress prices vary by materials and construction. Use this table to understand average costs and find the perfect balance between quality and budget.</p>
+                    <p>Mattress prices vary by materials and construction. Use this table to understand average costs
+                        and find the perfect balance between quality and budget.</p>
                     <div class="price-table-wrapper">
                         <table>
                             <thead>
@@ -219,11 +248,41 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td>Foam</td><td>less than $600</td><td>$600 – $1,200</td><td>$1,200 and up</td><td>$1,044</td></tr>
-                                <tr><td>Innerspring</td><td>less than $700</td><td>$600 – $1,200</td><td>$1,200 and up</td><td>$1,038</td></tr>
-                                <tr><td>Hybrid</td><td>less than $1,500</td><td>$1,500 – $2,200</td><td>$2,200 and up</td><td>$2,077</td></tr>
-                                <tr><td>Latex</td><td>less than $1,500</td><td>$1,500 – $2,500</td><td>$2,500 and up</td><td>$1,971</td></tr>
-                                <tr><td>Airbed</td><td>less than $1,500</td><td>$1,500 – $2,500</td><td>$2,500 and up</td><td>$2,283</td></tr>
+                                <tr>
+                                    <td>Foam</td>
+                                    <td>less than $600</td>
+                                    <td>$600 – $1,200</td>
+                                    <td>$1,200 and up</td>
+                                    <td>$1,044</td>
+                                </tr>
+                                <tr>
+                                    <td>Innerspring</td>
+                                    <td>less than $700</td>
+                                    <td>$600 – $1,200</td>
+                                    <td>$1,200 and up</td>
+                                    <td>$1,038</td>
+                                </tr>
+                                <tr>
+                                    <td>Hybrid</td>
+                                    <td>less than $1,500</td>
+                                    <td>$1,500 – $2,200</td>
+                                    <td>$2,200 and up</td>
+                                    <td>$2,077</td>
+                                </tr>
+                                <tr>
+                                    <td>Latex</td>
+                                    <td>less than $1,500</td>
+                                    <td>$1,500 – $2,500</td>
+                                    <td>$2,500 and up</td>
+                                    <td>$1,971</td>
+                                </tr>
+                                <tr>
+                                    <td>Airbed</td>
+                                    <td>less than $1,500</td>
+                                    <td>$1,500 – $2,500</td>
+                                    <td>$2,500 and up</td>
+                                    <td>$2,283</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -233,8 +292,10 @@
                         <div class="placeholder-content">
                             <div class="placeholder-icon">
                                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="1.5"/>
-                                    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+                                    <path
+                                        d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22"
+                                        stroke="currentColor" stroke-width="1.5" />
+                                    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5" />
                                 </svg>
                             </div>
                             <p>Transparent Pricing</p>
@@ -246,7 +307,7 @@
         </div>
     </section>
 
-    <!-- TOP RATED COMPARISONS -->
+    <!-- TOP RATED COMPARISONS WITH BRAND LOGOS -->
     <section class="section top-comparisons">
         <div class="container">
             <div class="section-header">
@@ -255,14 +316,7 @@
                 <p>See how your favorites match up — click any comparison to load it in our tool above.</p>
             </div>
             <div class="comparisons-grid" id="comparisonsGrid">
-                <div class="comparison-tag" data-m1="Casper" data-m2="Leesa">Casper vs Leesa</div>
-                <div class="comparison-tag" data-m1="Leesa" data-m2="Purple">Leesa vs Purple</div>
-                <div class="comparison-tag" data-m1="Purple" data-m2="Tempur-Pedic">Purple vs Tempur-Pedic</div>
-                <div class="comparison-tag" data-m1="Saatva" data-m2="Helix">Saatva vs Helix</div>
-                <div class="comparison-tag" data-m1="Nest Bedding" data-m2="DreamCloud">Nest Bedding vs DreamCloud</div>
-                <div class="comparison-tag" data-m1="Casper" data-m2="Purple">Casper vs Purple</div>
-                <div class="comparison-tag" data-m1="Tempur-Pedic" data-m2="Leesa">Tempur-Pedic vs Leesa</div>
-                <div class="comparison-tag" data-m1="Helix" data-m2="Saatva">Helix vs Saatva</div>
+                <!-- Comparison tags will be dynamically rendered with logos -->
             </div>
         </div>
     </section>
@@ -280,7 +334,9 @@
                             <div class="placeholder-content">
                                 <div class="placeholder-icon">
                                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-                                        <path d="M8 12H16M8 8H16M8 16H12M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.8214 2.48697 15.5291 3.33782 17L2.5 21.5L7 20.6622C8.47087 21.513 10.1786 22 12 22Z" stroke="currentColor" stroke-width="1.5"/>
+                                        <path
+                                            d="M8 12H16M8 8H16M8 16H12M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 13.8214 2.48697 15.5291 3.33782 17L2.5 21.5L7 20.6622C8.47087 21.513 10.1786 22 12 22Z"
+                                            stroke="currentColor" stroke-width="1.5" />
                                     </svg>
                                 </div>
                                 <p>Need more help?</p>
@@ -291,24 +347,35 @@
                 </div>
                 <div class="faq-list">
                     <div class="faq-item">
-                        <div class="faq-question">What is the best type of mattress? <span class="faq-icon">+</span></div>
-                        <div class="faq-answer">Most people prefer memory foam or hybrid mattresses for pressure relief and motion isolation. The "best" depends on sleep position and personal preference — that's why trying in-store matters.</div>
+                        <div class="faq-question">What is the best type of mattress? <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">Most people prefer memory foam or hybrid mattresses for pressure relief
+                            and motion isolation. The "best" depends on sleep position and personal preference — that's
+                            why trying in-store matters.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-question">What mattress do you recommend for back problems? <span class="faq-icon">+</span></div>
-                        <div class="faq-answer">According to chiropractors, hybrid mattresses like Saatva offer excellent lumbar support and spinal alignment. Always consult your doctor for personalized advice.</div>
+                        <div class="faq-question">What mattress do you recommend for back problems? <span
+                                class="faq-icon">+</span></div>
+                        <div class="faq-answer">According to chiropractors, hybrid mattresses like Saatva offer
+                            excellent lumbar support and spinal alignment. Always consult your doctor for personalized
+                            advice.</div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">What is a bed-in-a-box? <span class="faq-icon">+</span></div>
-                        <div class="faq-answer">A mattress compressed and rolled into a box for easy shipping. Many top brands like Casper, Leesa, and Purple use this method for convenient delivery.</div>
+                        <div class="faq-answer">A mattress compressed and rolled into a box for easy shipping. Many top
+                            brands like Casper, Leesa, and Purple use this method for convenient delivery.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-question">What is the best mattress for hot sleepers? <span class="faq-icon">+</span></div>
-                        <div class="faq-answer">Latex and hybrids with cooling gel layers work best. Helix Birch and Purple's Grid technology are top-rated cooling choices.</div>
+                        <div class="faq-question">What is the best mattress for hot sleepers? <span
+                                class="faq-icon">+</span></div>
+                        <div class="faq-answer">Latex and hybrids with cooling gel layers work best. Helix Birch and
+                            Purple's Grid technology are top-rated cooling choices.</div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-question">How do I get rid of my old mattress? <span class="faq-icon">+</span></div>
-                        <div class="faq-answer">Check local regulations. Many cities offer bulk pickup or recycling programs. SleePare also provides guidance in our blog and in-store.</div>
+                        <div class="faq-question">How do I get rid of my old mattress? <span class="faq-icon">+</span>
+                        </div>
+                        <div class="faq-answer">Check local regulations. Many cities offer bulk pickup or recycling
+                            programs. SleePare also provides guidance in our blog and in-store.</div>
                     </div>
                 </div>
             </div>
@@ -320,7 +387,8 @@
         <div class="container">
             <div class="cta-content">
                 <h3>Still not sure? Experience it yourself.</h3>
-                <p>Visit any SleePare showroom to test top brands side-by-side with expert guidance — no pressure, just honest advice.</p>
+                <p>Visit any SleePare showroom to test top brands side-by-side with expert guidance — no pressure, just
+                    honest advice.</p>
                 <a href="#" class="btn-primary btn-large">Find a Store Near You</a>
             </div>
         </div>
@@ -337,4 +405,5 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>

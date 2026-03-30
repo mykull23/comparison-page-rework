@@ -94,6 +94,18 @@ h3 {
 }
 
 /* Buttons */
+.btn-primary,
+.btn-outline,
+.btn-reset-simple,
+.btn-card-compare,
+.btn-card-details,
+.btn-swap-compact,
+.btn-deep-comparison,
+.modal .btn-primary,
+.modal .btn-outline {
+    font-family: 'Work Sans', sans-serif;
+}
+
 .btn-primary {
     background: var(--gradient-primary);
     color: var(--white);
@@ -121,6 +133,7 @@ h3 {
     background: transparent;
     border: 2px solid #5E00FF;
     color: #5E00FF;
+    font-size: 16px;
     font-weight: 700;
     border-radius: 8px;
     height: 52px;
@@ -137,6 +150,28 @@ h3 {
     background: var(--gradient-primary);
     border-color: transparent;
     color: var(--white);
+}
+
+.btn-deep-comparison {
+    width: 100%;
+    background: var(--gradient-primary);
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 12px;
+    height: 56px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-decoration: none;
+    transition: var(--transition-normal);
+    margin-top: 16px;
+}
+
+.btn-deep-comparison:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -8px rgba(94, 0, 255, 0.4);
 }
 
 /* Hero Section */
@@ -214,7 +249,7 @@ h3 {
 }
 
 /* ============================================
-   COMPARISON TOOL - REDESIGNED
+   COMPARISON TOOL
    ============================================ */
 .filter-bar {
     display: flex;
@@ -239,14 +274,16 @@ h3 {
     font-weight: 600;
     font-size: 14px;
     color: var(--heading-color);
+    font-family: 'Work Sans', sans-serif;
 }
 
 .simple-select {
     padding: 10px 16px;
     border-radius: 40px;
     border: 1px solid var(--border-light);
-    font-family: inherit;
+    font-family: 'Work Sans', sans-serif;
     font-size: 14px;
+    font-weight: 400;
     background: white;
     cursor: pointer;
     transition: var(--transition-fast);
@@ -262,9 +299,11 @@ h3 {
     padding: 10px 24px;
     border-radius: 40px;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
+    font-family: 'Work Sans', sans-serif;
     cursor: pointer;
     transition: var(--transition-fast);
+    color: var(--body-color);
 }
 
 .btn-reset-simple:hover {
@@ -283,6 +322,8 @@ h3 {
 /* Mattress Cards Panel */
 .mattress-cards-panel h3 {
     margin-bottom: 20px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
 }
 
 .mattress-grid {
@@ -324,23 +365,56 @@ h3 {
     background: linear-gradient(270deg, rgba(200, 0, 255, 0.05), transparent);
 }
 
+/* Brand Logo Styles */
+.brand-logo {
+    width: 100px;
+    height: auto;
+    max-height: 32px;
+    object-fit: contain;
+    object-position: left;
+}
+
+.brand-logo-compact {
+    width: 80px;
+    height: auto;
+    max-height: 28px;
+    object-fit: contain;
+}
+
+.brand-logo-modal {
+    width: 140px;
+    height: auto;
+    max-height: 40px;
+    object-fit: contain;
+    margin: 0 auto 8px;
+}
+
+.brand-logo-tag {
+    width: 70px;
+    height: auto;
+    max-height: 24px;
+    object-fit: contain;
+    transition: var(--transition-fast);
+}
+
 .mattress-card-info {
     flex: 1;
 }
 
-.mattress-card-info h4 {
-    font-size: 18px;
-    margin-bottom: 4px;
+.mattress-card-info .brand-logo {
+    margin-bottom: 6px;
 }
 
 .mattress-card-info p {
     font-size: 13px;
     color: #6c757d;
+    margin-top: 4px;
 }
 
 .mattress-card-price {
     font-weight: 700;
     color: var(--heading-color);
+    font-family: 'Work Sans', sans-serif;
 }
 
 .mattress-card-actions {
@@ -352,10 +426,11 @@ h3 {
     background: var(--gradient-primary);
     color: white;
     border: none;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 12px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
     font-weight: 600;
+    font-family: 'Work Sans', sans-serif;
     cursor: pointer;
     transition: var(--transition-fast);
 }
@@ -367,9 +442,11 @@ h3 {
 .btn-card-details {
     background: transparent;
     border: 1px solid var(--border-light);
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 12px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Work Sans', sans-serif;
     cursor: pointer;
     transition: var(--transition-fast);
 }
@@ -390,6 +467,8 @@ h3 {
 
 .comparison-panel h3 {
     margin-bottom: 20px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
 }
 
 .comparison-slots-compact {
@@ -421,6 +500,7 @@ h3 {
     height: 100%;
     color: #adb5bd;
     font-size: 14px;
+    font-family: 'Work Sans', sans-serif;
 }
 
 .compact-slot-header {
@@ -432,8 +512,7 @@ h3 {
     border-bottom: 1px solid var(--border-light);
 }
 
-.compact-slot-header h4 {
-    font-size: 20px;
+.compact-slot-header .brand-logo-compact {
     margin-bottom: 0;
 }
 
@@ -443,6 +522,7 @@ h3 {
     font-size: 20px;
     cursor: pointer;
     color: #adb5bd;
+    font-family: 'Work Sans', sans-serif;
 }
 
 .remove-slot:hover {
@@ -452,12 +532,30 @@ h3 {
 .compact-feature-list {
     list-style: none;
     font-size: 13px;
+    font-family: 'Work Sans', sans-serif;
 }
 
 .compact-feature-list li {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.compact-feature-list li:last-child {
+    border-bottom: none;
+}
+
+.compact-feature-list li span:first-child {
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.compact-feature-list li span:last-child {
+    font-weight: 600;
+    color: var(--heading-color);
+    text-align: right;
 }
 
 .compact-vs {
@@ -467,6 +565,7 @@ h3 {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    font-family: 'Work Sans', sans-serif;
 }
 
 /* Score Cards */
@@ -489,6 +588,7 @@ h3 {
     margin-bottom: 16px;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--border-light);
+    font-family: 'Work Sans', sans-serif;
 }
 
 .score-value {
@@ -499,11 +599,13 @@ h3 {
     background-clip: text;
     color: transparent;
     margin-bottom: 8px;
+    font-family: 'Work Sans', sans-serif;
 }
 
 .score-label {
     font-size: 12px;
     color: #6c757d;
+    font-family: 'Work Sans', sans-serif;
 }
 
 .score-detail-item {
@@ -512,6 +614,11 @@ h3 {
     padding: 10px 0;
     font-size: 13px;
     border-bottom: 1px solid var(--border-light);
+    font-family: 'Work Sans', sans-serif;
+}
+
+.score-detail-item:last-child {
+    border-bottom: none;
 }
 
 .score-detail-label {
@@ -522,40 +629,77 @@ h3 {
 .score-detail-value {
     font-weight: 600;
     color: var(--heading-color);
+    text-align: right;
 }
 
-.btn-swap-compact {
-    width: 100%;
-    background: transparent;
-    border: 1px solid var(--border-light);
-    padding: 12px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 500;
+/* Deep Comparison Button */
+.deep-comparison-container {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-light);
+}
+
+/* Top Comparisons Grid with Hover Text Effect */
+.comparisons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+.comparison-tag {
+    background: var(--white);
+    padding: 16px 24px;
+    border-radius: 60px;
+    font-weight: 600;
+    text-align: center;
     cursor: pointer;
+    transition: var(--transition-fast);
+    border: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.comparison-tag .logo-wrapper,
+.comparison-tag .text-wrapper {
     transition: var(--transition-fast);
 }
 
-.btn-swap-compact:hover {
-    border-color: #5E00FF;
+.comparison-tag .text-wrapper {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.95);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
     color: #5E00FF;
+    white-space: nowrap;
 }
 
-/* Brand-specific styling */
-.mattress-card[data-brand="Casper"] .mattress-card-info h4 { color: #2C5F8A; }
-.mattress-card[data-brand="Leesa"] .mattress-card-info h4 { color: #4A6A5E; }
-.mattress-card[data-brand="Purple"] .mattress-card-info h4 { color: #6A1B9A; }
-.mattress-card[data-brand="Nest Bedding"] .mattress-card-info h4 { color: #2E7D64; }
-.mattress-card[data-brand="Saatva"] .mattress-card-info h4 { color: #B76E2E; }
-.mattress-card[data-brand="Helix"] .mattress-card-info h4 { color: #00A86B; }
-.mattress-card[data-brand="Tempur-Pedic"] .mattress-card-info h4 { color: #8B4513; }
-.mattress-card[data-brand="DreamCloud"] .mattress-card-info h4 { color: #4B6A9B; }
+.comparison-tag:hover {
+    background: var(--gradient-primary);
+    border-color: transparent;
+}
 
-.compact-slot[data-brand="Casper"] h4 { color: #2C5F8A; }
-.compact-slot[data-brand="Leesa"] h4 { color: #4A6A5E; }
-.compact-slot[data-brand="Purple"] h4 { color: #6A1B9A; }
+.comparison-tag:hover .logo-wrapper {
+    opacity: 0;
+    transform: scale(0.95);
+}
 
-/* Other sections (keep existing styles) */
+.comparison-tag:hover .text-wrapper {
+    opacity: 1;
+    transform: scale(1);
+    color: white;
+}
+
+.comparison-tag .brand-logo-tag {
+    transition: var(--transition-fast);
+}
+
+/* Elements Grid */
 .elements-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -588,8 +732,10 @@ h3 {
     justify-content: center;
     border-radius: 20px;
     margin: 0 auto 20px auto;
+    font-family: 'Work Sans', sans-serif;
 }
 
+/* Price Table */
 .price-grid {
     display: grid;
     grid-template-columns: 1fr 0.8fr;
@@ -606,6 +752,7 @@ table {
     background: white;
     border-radius: 20px;
     overflow: hidden;
+    font-family: 'Work Sans', sans-serif;
 }
 
 th, td {
@@ -619,30 +766,7 @@ th {
     font-weight: 700;
 }
 
-.comparisons-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-}
-
-.comparison-tag {
-    background: var(--white);
-    padding: 16px 24px;
-    border-radius: 60px;
-    font-weight: 600;
-    color: #5E00FF;
-    text-align: center;
-    cursor: pointer;
-    transition: var(--transition-fast);
-    border: 1px solid var(--border-light);
-}
-
-.comparison-tag:hover {
-    background: var(--gradient-primary);
-    color: white;
-    transform: translateY(-2px);
-}
-
+/* FAQ */
 .faq-grid {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -661,6 +785,7 @@ th {
     cursor: pointer;
     display: flex;
     justify-content: space-between;
+    font-family: 'Work Sans', sans-serif;
 }
 
 .faq-icon {
@@ -673,6 +798,7 @@ th {
     overflow: hidden;
     transition: max-height 0.3s ease;
     color: #6c757d;
+    font-family: 'Work Sans', sans-serif;
 }
 
 .faq-item.active .faq-answer {
@@ -680,6 +806,7 @@ th {
     padding-bottom: 16px;
 }
 
+/* CTA Banner */
 .cta-banner {
     background: var(--heading-color);
     padding: 80px 0;
@@ -689,12 +816,14 @@ th {
 .cta-content h3 {
     color: white;
     font-size: 36px;
+    font-family: 'Work Sans', sans-serif;
 }
 
 .cta-content p {
     color: rgba(255,255,255,0.8);
     max-width: 600px;
     margin: 16px auto 32px;
+    font-family: 'Work Sans', sans-serif;
 }
 
 .cta-banner .btn-primary {
@@ -722,6 +851,7 @@ th {
     border-radius: 32px;
     max-height: 85vh;
     overflow-y: auto;
+    font-family: 'Work Sans', sans-serif;
 }
 
 .modal-close {
@@ -729,12 +859,51 @@ th {
     font-size: 28px;
     cursor: pointer;
     padding: 20px;
+    font-family: 'Work Sans', sans-serif;
 }
 
 #modalContent {
     padding: 0 32px 32px;
     clear: both;
 }
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.animate-fade-in-right {
+    animation: fadeInRight 0.6s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animation-delay-1 { animation-delay: 0.1s; }
+.animation-delay-2 { animation-delay: 0.2s; }
+.animation-delay-3 { animation-delay: 0.3s; }
+.animation-delay-4 { animation-delay: 0.4s; }
 
 /* Responsive */
 @media (max-width: 1024px) {
@@ -758,4 +927,258 @@ th {
     .score-cards-container { grid-template-columns: 1fr; }
     .price-grid { grid-template-columns: 1fr; }
     .faq-grid { grid-template-columns: 1fr; }
+    .comparisons-grid { grid-template-columns: 1fr; }
+    .comparison-tag { justify-content: center; }
+    .comparison-tag .text-wrapper {
+        white-space: normal;
+        text-align: center;
+    }
+}
+
+/* Add to existing styles.css - Fixes for missing styles */
+
+/* Deep Comparison Button - Make sure it's visible */
+.deep-comparison-container {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-light);
+    display: block;
+}
+
+.btn-deep-comparison {
+    width: 100%;
+    background: var(--gradient-primary);
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 12px;
+    height: 56px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-decoration: none;
+    transition: var(--transition-normal);
+    font-family: 'Work Sans', sans-serif;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-deep-comparison:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -8px rgba(94, 0, 255, 0.4);
+}
+
+/* Swap Position Button Styles */
+.btn-swap-compact {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--border-light);
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Work Sans', sans-serif;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    color: var(--body-color);
+    margin-top: 16px;
+}
+
+.btn-swap-compact:hover {
+    border-color: #5E00FF;
+    color: #5E00FF;
+    background: rgba(94, 0, 255, 0.05);
+}
+
+/* Swap container */
+.swap-container {
+    margin-top: 16px;
+    display: block;
+}
+
+/* Top Comparisons Hover Effect - Fixed */
+.comparison-tag {
+    background: var(--white);
+    padding: 16px 24px;
+    border-radius: 60px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    border: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    min-height: 70px;
+}
+
+.comparison-tag .logo-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.comparison-tag .text-wrapper {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.9);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+    white-space: nowrap;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: none;
+}
+
+.comparison-tag:hover {
+    background: var(--gradient-primary);
+    border-color: transparent;
+}
+
+.comparison-tag:hover .logo-wrapper {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.comparison-tag:hover .text-wrapper {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Make sure the VS text stays visible on hover */
+.comparison-tag span:not(.text-wrapper) {
+    transition: color 0.2s ease;
+    z-index: 1;
+    position: relative;
+}
+
+.comparison-tag:hover span:not(.text-wrapper) {
+    color: white;
+}
+
+.comparison-tag .brand-logo-tag {
+    width: 70px;
+    height: auto;
+    max-height: 28px;
+    object-fit: contain;
+    transition: var(--transition-fast);
+}
+
+/* Responsive fix for mobile */
+@media (max-width: 768px) {
+    .comparison-tag .text-wrapper {
+        white-space: normal;
+        text-align: center;
+        font-size: 12px;
+    }
+    
+    .comparison-tag {
+        min-height: 80px;
+        padding: 12px 16px;
+    }
+}
+
+/* Add to existing styles.css - New styles for comparison panel */
+
+/* Comparison Panel Header with Swap Icon */
+.comparison-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.comparison-panel-header h3 {
+    margin-bottom: 0;
+}
+
+.btn-swap-icon {
+    background: transparent;
+    border: 1px solid var(--border-light);
+    border-radius: 40px;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    color: var(--body-color);
+}
+
+.btn-swap-icon:hover {
+    border-color: #5E00FF;
+    color: #5E00FF;
+    transform: rotate(180deg);
+}
+
+.btn-swap-icon svg {
+    transition: transform 0.3s ease;
+}
+
+.btn-swap-icon:hover svg {
+    transform: rotate(180deg);
+}
+
+/* Deep Comparison Button */
+.deep-comparison-container {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-light);
+    display: block;
+}
+
+.btn-deep-comparison {
+    width: 100%;
+    background: var(--gradient-primary);
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 12px;
+    height: 56px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-decoration: none;
+    transition: var(--transition-normal);
+    font-family: 'Work Sans', sans-serif;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-deep-comparison:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -8px rgba(94, 0, 255, 0.4);
+}
+
+.btn-deep-comparison svg {
+    transition: transform 0.2s ease;
+}
+
+.btn-deep-comparison:hover svg {
+    transform: translateX(4px);
+}
+
+/* Ensure swap container is hidden since we moved the button */
+.swap-container {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .btn-swap-icon {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .btn-deep-comparison {
+        height: 48px;
+        font-size: 14px;
+    }
 }
