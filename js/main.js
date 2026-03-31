@@ -1,272 +1,80 @@
 // ============================================
-// MATTRESS DATABASE with Logo Paths
+// SLEEPARE COMPARISON TOOL - MAIN APP
 // ============================================
-// Place your brand logo images in: assets/images/brands/
-// Expected file names: casper-logo.png, leesa-logo.png, purple-logo.png, etc.
-const mattressData = {
-    "Casper": {
-        logo: "assets/images/brands/casper-logo.png",
-        type: "Memory Foam / Hybrid",
-        comfort: "Medium-firm, zoned support",
-        value: "Great value — top rated",
-        price: "$1,095 – $2,295",
-        priceValue: 1200,
-        materials: "AirScape foam, zoned support",
-        firmness: 6.5,
-        firmnessText: "Medium-firm",
-        rating: 4.8,
-        bestFor: "Back sleepers, couples",
-        sleepPosition: ["back", "combination"],
-        tagline: "Engineered for the way you sleep",
-        warranty: "10 years limited",
-        trial: "100 nights",
-        cooling: "AirScape breathable foam",
-        motionIsolation: "Excellent",
-        edgeSupport: "Good",
-        sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King"],
-        shipping: "Free shipping, compressed in a box",
-        scores: { type: 8, support: 9, value: 9, price: 7, materials: 8 },
-        accentColor: "#2C5F8A",
-        expertSummary: "The Casper Original features Zoned Support that provides targeted pressure relief.",
-        customerRatingCount: 429,
-        keyFeatures: ["Cooling", "Zoned Support", "Medium-firm", "Motion Isolation"]
-    },
-    "Leesa": {
-        logo: "assets/images/brands/leesa-logo.png",
-        type: "Foam / Hybrid",
-        comfort: "Medium-firm, pressure relief",
-        value: "High value, social impact",
-        price: "$999 – $2,099",
-        priceValue: 1000,
-        materials: "3-layer foam, cooling top",
-        firmness: 6,
-        firmnessText: "Medium",
-        rating: 4.7,
-        bestFor: "All sleep positions",
-        sleepPosition: ["back", "side", "stomach", "combination"],
-        tagline: "Sleep better, do good",
-        warranty: "10 years",
-        trial: "100 nights",
-        cooling: "Cooling top layer, breathable foam",
-        motionIsolation: "Excellent",
-        edgeSupport: "Very Good",
-        sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King"],
-        shipping: "Free shipping & returns",
-        scores: { type: 8, support: 9, value: 9, price: 8, materials: 8 },
-        accentColor: "#4A6A5E",
-        expertSummary: "Leesa combines three premium foam layers for universal comfort.",
-        customerRatingCount: 272,
-        keyFeatures: ["Pressure Relief", "Universal Comfort", "Cooling Top", "Eco-friendly"]
-    },
-    "Purple": {
-        logo: "assets/images/brands/purple-logo.png",
-        type: "Hyper-Elastic Polymer",
-        comfort: "Soft yet supportive, cooling grid",
-        value: "Premium cooling technology",
-        price: "$1,399 – $3,498",
-        priceValue: 1800,
-        materials: "Purple Grid, breathable cover",
-        firmness: 5,
-        firmnessText: "Medium-soft",
-        rating: 4.6,
-        bestFor: "Hot sleepers, combo sleepers",
-        sleepPosition: ["side", "combination"],
-        tagline: "No pressure, all comfort",
-        warranty: "10 years",
-        trial: "100 nights",
-        cooling: "Purple Grid hyper-elastic polymer",
-        motionIsolation: "Very Good",
-        edgeSupport: "Good",
-        sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King", "Split King"],
-        shipping: "Free shipping",
-        scores: { type: 9, support: 8, value: 8, price: 6, materials: 9 },
-        accentColor: "#6A1B9A",
-        expertSummary: "The Purple Grid flexes under pressure points while supporting the rest of the body.",
-        customerRatingCount: 512,
-        keyFeatures: ["Hyper-Elastic Grid", "Cooling", "Pressure Relief", "Durable"]
-    },
-    "Nest Bedding": {
-        logo: "assets/images/brands/nest-bedding-logo.png",
-        type: "Hybrid / Latex",
-        comfort: "Customizable firmness",
-        value: "Organic, eco-friendly",
-        price: "$1,099 – $2,399",
-        priceValue: 1500,
-        materials: "Organic cotton, natural latex",
-        firmness: 6,
-        firmnessText: "Selectable",
-        rating: 4.9,
-        bestFor: "Eco-conscious shoppers",
-        sleepPosition: ["back", "side", "stomach", "combination"],
-        tagline: "Handcrafted in the USA",
-        warranty: "Lifetime",
-        trial: "365 nights",
-        cooling: "Natural latex, breathable cover",
-        motionIsolation: "Good",
-        edgeSupport: "Excellent",
-        sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King"],
-        shipping: "Free white glove delivery",
-        scores: { type: 9, support: 9, value: 9, price: 7, materials: 10 },
-        accentColor: "#2E7D64",
-        expertSummary: "Nest Bedding offers customizable firmness and organic materials.",
-        customerRatingCount: 348,
-        keyFeatures: ["Organic", "Customizable", "Eco-friendly", "Handcrafted"]
-    },
-    "Saatva": {
-        logo: "assets/images/brands/saatva-logo.png",
-        type: "Innerspring Hybrid",
-        comfort: "Lumbar support, luxury feel",
-        value: "Premium, eco-friendly",
-        price: "$1,295 – $2,590",
-        priceValue: 1600,
-        materials: "Organic cotton, coil-on-coil",
-        firmness: 7,
-        firmnessText: "Medium-firm to firm",
-        rating: 4.9,
-        bestFor: "Back pain sufferers",
-        sleepPosition: ["back", "stomach"],
-        tagline: "Luxury without the markup",
-        warranty: "Lifetime",
-        trial: "365 nights",
-        cooling: "Organic cotton cover, breathable coils",
-        motionIsolation: "Fair",
-        edgeSupport: "Excellent",
-        sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King", "Split King"],
-        shipping: "Free white glove delivery",
-        scores: { type: 8, support: 10, value: 9, price: 7, materials: 9 },
-        accentColor: "#B76E2E",
-        expertSummary: "Saatva's coil-on-coil construction provides exceptional lumbar support.",
-        customerRatingCount: 892,
-        keyFeatures: ["Lumbar Support", "Luxury", "Organic", "Spinal Alignment"]
-    },
-    "Helix": {
-        logo: "assets/images/brands/helix-logo.png",
-        type: "Hybrid (Personalized)",
-        comfort: "Tailored to your body",
-        value: "High customization",
-        price: "$936 – $2,349",
-        priceValue: 1100,
-        materials: "DuraDense foam, wrapped coils",
-        firmness: 5.5,
-        firmnessText: "Customizable",
-        rating: 4.7,
-        bestFor: "Personalized comfort",
-        sleepPosition: ["back", "side", "stomach", "combination"],
-        tagline: "Made for you",
-        warranty: "10 years",
-        trial: "100 nights",
-        cooling: "Gel-infused foam, breathable cover",
-        motionIsolation: "Good",
-        edgeSupport: "Very Good",
-        sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King"],
-        shipping: "Free shipping",
-        scores: { type: 9, support: 9, value: 8, price: 8, materials: 8 },
-        accentColor: "#00A86B",
-        expertSummary: "Helix offers a personalized sleep experience with a quiz that matches you.",
-        customerRatingCount: 567,
-        keyFeatures: ["Personalized", "Hybrid", "Cooling", "Custom Firmness"]
-    },
-    "Tempur-Pedic": {
-        logo: "assets/images/brands/tempur-pedic-logo.png",
-        type: "Memory Foam",
-        comfort: "Deep contouring, pressure relief",
-        value: "Luxury, long-lasting",
-        price: "$1,899 – $5,000+",
-        priceValue: 3000,
-        materials: "Tempur material, cooling tech",
-        firmness: 6,
-        firmnessText: "Soft to firm options",
-        rating: 4.8,
-        bestFor: "Pressure point relief",
-        sleepPosition: ["back", "side"],
-        tagline: "The original memory foam",
-        warranty: "10 years",
-        trial: "90 nights",
-        cooling: "Tempur-APR+ cooling",
-        motionIsolation: "Superior",
-        edgeSupport: "Excellent",
-        sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King", "Split King"],
-        shipping: "White glove delivery",
-        scores: { type: 9, support: 10, value: 7, price: 4, materials: 10 },
-        accentColor: "#8B4513",
-        expertSummary: "Tempur-Pedic's proprietary memory foam conforms to your body.",
-        customerRatingCount: 1245,
-        keyFeatures: ["Memory Foam", "Pressure Relief", "Motion Isolation", "Premium"]
-    },
-    "DreamCloud": {
-        logo: "assets/images/brands/dreamcloud-logo.png",
-        type: "Hybrid Luxury",
-        comfort: "Medium-firm, cashmere cover",
-        value: "Luxury at accessible price",
-        price: "$899 – $1,399",
-        priceValue: 1000,
-        materials: "Gel foam, innerspring coils",
-        firmness: 6.5,
-        firmnessText: "Medium-firm",
-        rating: 4.7,
-        bestFor: "Luxury on a budget",
-        sleepPosition: ["back", "stomach"],
-        tagline: "Luxury you can afford",
-        warranty: "Lifetime",
-        trial: "365 nights",
-        cooling: "Gel memory foam, cashmere cover",
-        motionIsolation: "Good",
-        edgeSupport: "Excellent",
-        sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King"],
-        shipping: "Free white glove delivery",
-        scores: { type: 8, support: 8, value: 9, price: 9, materials: 8 },
-        accentColor: "#4B6A9B",
-        expertSummary: "DreamCloud brings luxury hybrid construction at an accessible price point.",
-        customerRatingCount: 734,
-        keyFeatures: ["Luxury Hybrid", "Cashmere Cover", "Lifetime Warranty", "Value"]
-    }
-};
 
-// Predefined comparisons for top-rated section
-const topComparisons = [
-    { brand1: "Casper", brand2: "Leesa" },
-    { brand1: "Leesa", brand2: "Purple" },
-    { brand1: "Purple", brand2: "Tempur-Pedic" },
-    { brand1: "Saatva", brand2: "Helix" },
-    { brand1: "Nest Bedding", brand2: "DreamCloud" },
-    { brand1: "Casper", brand2: "Purple" },
-    { brand1: "Tempur-Pedic", brand2: "Leesa" },
-    { brand1: "Helix", brand2: "Saatva" }
-];
-
-// Global state
-let selectedSlotA = null;
-let selectedSlotB = null;
+// Load saved comparison from localStorage
+let selectedSlotA = localStorage.getItem('selectedSlotA') || null;
+let selectedSlotB = localStorage.getItem('selectedSlotB') || null;
 let currentFilters = {
-    sleepPosition: "all",
-    type: "all",
-    budget: "all"
+    sleepPosition: localStorage.getItem('sleepPosition') || "all",
+    type: localStorage.getItem('type') || "all",
+    budget: localStorage.getItem('budget') || "all"
 };
 
-// ============================================
-// RENDER MATTRESS GRID with Logos
-// ============================================
+function saveComparisonState() {
+    localStorage.setItem('selectedSlotA', selectedSlotA);
+    localStorage.setItem('selectedSlotB', selectedSlotB);
+    localStorage.setItem('sleepPosition', currentFilters.sleepPosition);
+    localStorage.setItem('type', currentFilters.type);
+    localStorage.setItem('budget', currentFilters.budget);
+}
+
+function renderStars(rating) {
+    const fullStars = Math.floor(rating);
+    let starsHtml = '';
+    for (let i = 0; i < fullStars; i++) starsHtml += '★';
+    const emptyStars = 5 - Math.ceil(rating);
+    for (let i = 0; i < emptyStars; i++) starsHtml += '☆';
+    return `<span style="color: #FFB800;">${starsHtml}</span> <strong>${rating}/5</strong>`;
+}
+
+function renderModelSelector(brand, currentModelIndex) {
+    const brandData = window.mattressData[brand];
+    if (!brandData || !brandData.models || brandData.models.length <= 1) return '';
+    
+    return `
+        <div class="model-selector">
+            ${brandData.models.map((model, idx) => `
+                <span class="model-badge ${idx === currentModelIndex ? 'active' : ''}" data-brand="${brand}" data-model-index="${idx}">
+                    ${model.name.split(' ').pop() || model.name}
+                </span>
+            `).join('')}
+        </div>
+    `;
+}
+
 function renderMattressGrid() {
     const grid = document.getElementById('mattressGrid');
     if (!grid) return;
     
-    const filteredMattresses = Object.entries(mattressData).filter(([name, data]) => {
-        if (currentFilters.sleepPosition !== "all" && !data.sleepPosition.includes(currentFilters.sleepPosition)) {
+    const filteredMattresses = Object.entries(window.mattressData).filter(([name, data]) => {
+        const currentModel = getCurrentModel(name);
+        if (currentFilters.sleepPosition !== "all" && !currentModel.sleepPosition.includes(currentFilters.sleepPosition)) {
             return false;
         }
-        if (currentFilters.type !== "all" && !data.type.toLowerCase().includes(currentFilters.type)) {
-            return false;
+        if (currentFilters.type !== "all") {
+            const typeLower = currentModel.type.toLowerCase();
+            if (currentFilters.type === "memory foam" && !typeLower.includes("memory")) return false;
+            if (currentFilters.type === "hybrid" && !typeLower.includes("hybrid")) return false;
+            if (currentFilters.type === "latex" && !typeLower.includes("latex")) return false;
         }
         if (currentFilters.budget !== "all") {
-            if (currentFilters.budget === "under1000" && data.priceValue >= 1000) return false;
-            if (currentFilters.budget === "1000-2000" && (data.priceValue < 1000 || data.priceValue > 2000)) return false;
-            if (currentFilters.budget === "2000-3000" && (data.priceValue < 2000 || data.priceValue > 3000)) return false;
-            if (currentFilters.budget === "over3000" && data.priceValue <= 3000) return false;
+            const priceVal = currentModel.priceValue;
+            if (currentFilters.budget === "under1000" && priceVal >= 1000) return false;
+            if (currentFilters.budget === "1000-2000" && (priceVal < 1000 || priceVal > 2000)) return false;
+            if (currentFilters.budget === "over2000" && priceVal <= 2000) return false;
         }
         return true;
     });
     
+    if (filteredMattresses.length === 0) {
+        grid.innerHTML = '<div style="text-align: center; padding: 40px;">No mattresses match your filters</div>';
+        return;
+    }
+    
     grid.innerHTML = filteredMattresses.map(([name, data]) => {
+        const currentModel = getCurrentModel(name);
+        const currentModelIndex = window.currentModels[name] || 0;
         const isSelectedA = selectedSlotA === name;
         const isSelectedB = selectedSlotB === name;
         let selectedClass = '';
@@ -276,261 +84,160 @@ function renderMattressGrid() {
         return `
             <div class="mattress-card ${selectedClass}" data-brand="${name}">
                 <div class="mattress-card-info">
-                    <img src="${data.logo}" alt="${name} logo" class="brand-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <p style="display: none;">${name}</p>
-                    <p>${data.tagline}</p>
-                    <div style="display: flex; gap: 8px; margin-top: 6px;">
-                        <span style="font-size: 12px; background: #f0f0f0; padding: 2px 8px; border-radius: 12px;">${data.firmnessText}</span>
-                        <span style="font-size: 12px; background: #f0f0f0; padding: 2px 8px; border-radius: 12px;">${data.type.split('/')[0]}</span>
-                    </div>
+                    <img src="${data.logo}" alt="${name}" class="brand-logo" onerror="this.style.display='none'">
+                    <div class="model-name">${currentModel.name}</div>
+                    <p>${currentModel.tagline.substring(0, 50)}${currentModel.tagline.length > 50 ? '...' : ''}</p>
+                    ${renderModelSelector(name, currentModelIndex)}
                 </div>
-                <div class="mattress-card-price">${data.price}</div>
+                <div class="mattress-card-price">${currentModel.price}</div>
                 <div class="mattress-card-actions">
                     <button class="btn-card-compare" data-brand="${name}">Compare</button>
-                    <button class="btn-card-details" data-brand="${name}">Details</button>
+                    <button class="btn-card-details" data-brand="${name}">Info</button>
                 </div>
             </div>
         `;
     }).join('');
     
-    // Add event listeners
+    document.querySelectorAll('.model-badge').forEach(badge => {
+        badge.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const brand = badge.getAttribute('data-brand');
+            const modelIndex = parseInt(badge.getAttribute('data-model-index'));
+            if (selectModel(brand, modelIndex)) {
+                renderMattressGrid();
+                if (selectedSlotA === brand || selectedSlotB === brand) {
+                    renderCompactSlots();
+                    updateScoreCards();
+                }
+                saveComparisonState();
+            }
+        });
+    });
+    
     document.querySelectorAll('.btn-card-compare').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const brand = btn.getAttribute('data-brand');
-            addToComparison(brand);
+            addToComparison(btn.getAttribute('data-brand'));
         });
     });
     
     document.querySelectorAll('.btn-card-details').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const brand = btn.getAttribute('data-brand');
-            openModal(brand);
+            openModal(btn.getAttribute('data-brand'));
         });
     });
 }
 
-// ============================================
-// RENDER TOP COMPARISONS with Hover Text Effect - FIXED
-// ============================================
-function renderTopComparisons() {
-    const grid = document.getElementById('comparisonsGrid');
-    if (!grid) return;
-    
-    grid.innerHTML = topComparisons.map(comp => {
-        const brand1 = mattressData[comp.brand1];
-        const brand2 = mattressData[comp.brand2];
-        if (!brand1 || !brand2) return '';
-        
-        return `
-            <div class="comparison-tag" data-m1="${comp.brand1}" data-m2="${comp.brand2}">
-                <div class="logo-wrapper">
-                    <img src="${brand1.logo}" alt="${comp.brand1}" class="brand-logo-tag" onerror="this.style.display='none'">
-                    <span style="margin: 0 4px;">${comp.brand1}</span>
-                </div>
-                <span class="vs-text">VS</span>
-                <div class="logo-wrapper">
-                    <img src="${brand2.logo}" alt="${comp.brand2}" class="brand-logo-tag" onerror="this.style.display='none'">
-                    <span style="margin: 0 4px;">${comp.brand2}</span>
-                </div>
-                <div class="text-wrapper">Compare Now →</div>
-            </div>
-        `;
-    }).join('');
-    
-    // Add click handlers - redirect to detailed-comparison.html
-    document.querySelectorAll('.comparison-tag').forEach(tag => {
-        tag.addEventListener('click', () => {
-            const brand1 = tag.getAttribute('data-m1');
-            const brand2 = tag.getAttribute('data-m2');
-            if (brand1 && brand2) {
-                window.location.href = `detailed-comparison.html?compare=${encodeURIComponent(brand1)}|${encodeURIComponent(brand2)}`;
-            }
-        });
-    });
-}
-
-// ============================================
-// ADD TO COMPARISON
-// ============================================
 function addToComparison(brand) {
     if (!selectedSlotA) {
         selectedSlotA = brand;
     } else if (!selectedSlotB) {
         selectedSlotB = brand;
     } else {
-        // Both slots filled, replace slot B
         selectedSlotB = brand;
     }
+    saveComparisonState();
     renderCompactSlots();
     renderMattressGrid();
     updateScoreCards();
     updateDeepComparisonButton();
 }
 
-// ============================================
-// RENDER COMPACT SLOTS with Logos and Right-Aligned Values
-// ============================================
 function renderCompactSlots() {
     const slotA = document.getElementById('compactSlotA');
     const slotB = document.getElementById('compactSlotB');
     
-    if (selectedSlotA && mattressData[selectedSlotA]) {
-        const data = mattressData[selectedSlotA];
-        slotA.innerHTML = `
-            <div class="compact-slot-header">
-                <img src="${data.logo}" alt="${selectedSlotA}" class="brand-logo-compact" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <h4 style="display: none;">${selectedSlotA}</h4>
-                <button class="remove-slot" data-slot="A">×</button>
-            </div>
-            <ul class="compact-feature-list">
-                <li><span>Type</span><span><strong>${data.type.split('/')[0]}</strong></span></li>
-                <li><span>Firmness</span><span><strong>${data.firmnessText}</strong></span></li>
-                <li><span>Price</span><span><strong>${data.price}</strong></span></li>
-                <li><span>Rating</span><span><strong>${data.rating} ★</strong></span></li>
-            </ul>
-            <button class="btn-card-details" data-brand="${selectedSlotA}" style="width:100%; margin-top:12px; padding:8px;">Details</button>
-        `;
-        slotA.classList.add('filled');
-        slotA.setAttribute('data-brand', selectedSlotA);
-        
-        slotA.querySelector('.remove-slot')?.addEventListener('click', () => {
-            selectedSlotA = null;
-            renderCompactSlots();
-            renderMattressGrid();
-            updateScoreCards();
-            updateDeepComparisonButton();
-        });
-        
-        slotA.querySelector('.btn-card-details')?.addEventListener('click', () => {
-            openModal(selectedSlotA);
-        });
-    } else {
-        slotA.innerHTML = `<div class="compact-slot-empty"><span>Select mattress</span></div>`;
-        slotA.classList.remove('filled');
-        slotA.removeAttribute('data-brand');
+    function renderSlot(slot, brand, slotName) {
+        if (brand && window.mattressData[brand]) {
+            const currentModel = getCurrentModel(brand);
+            const data = window.mattressData[brand];
+            slot.innerHTML = `
+                <div class="compact-slot-header">
+                    <img src="${data.logo}" alt="${brand}" class="brand-logo-compact" onerror="this.style.display='none'">
+                    <button class="remove-slot" data-slot="${slotName}">×</button>
+                </div>
+                <div style="font-size: 12px; font-weight: 600; margin-bottom: 6px;">${currentModel.name}</div>
+                <ul class="compact-feature-list">
+                    <li><span>Type</span><span>${currentModel.type.split('/')[0]}</span></li>
+                    <li><span>Firmness</span><span>${currentModel.firmnessText}</span></li>
+                    <li><span>Price</span><span>${currentModel.price}</span></li>
+                </ul>
+                <button class="btn-card-details" data-brand="${brand}" style="width:100%; margin-top:8px; padding:4px; font-size:11px;">Details</button>
+            `;
+            slot.classList.add('filled');
+            slot.querySelector('.remove-slot')?.addEventListener('click', () => {
+                if (slotName === 'A') selectedSlotA = null;
+                else selectedSlotB = null;
+                saveComparisonState();
+                renderCompactSlots();
+                renderMattressGrid();
+                updateScoreCards();
+                updateDeepComparisonButton();
+            });
+            slot.querySelector('.btn-card-details')?.addEventListener('click', () => openModal(brand));
+        } else {
+            slot.innerHTML = `<div class="compact-slot-empty"><span>Select mattress</span></div>`;
+            slot.classList.remove('filled');
+        }
     }
     
-    if (selectedSlotB && mattressData[selectedSlotB]) {
-        const data = mattressData[selectedSlotB];
-        slotB.innerHTML = `
-            <div class="compact-slot-header">
-                <img src="${data.logo}" alt="${selectedSlotB}" class="brand-logo-compact" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <h4 style="display: none;">${selectedSlotB}</h4>
-                <button class="remove-slot" data-slot="B">×</button>
-            </div>
-            <ul class="compact-feature-list">
-                <li><span>Type</span><span><strong>${data.type.split('/')[0]}</strong></span></li>
-                <li><span>Firmness</span><span><strong>${data.firmnessText}</strong></span></li>
-                <li><span>Price</span><span><strong>${data.price}</strong></span></li>
-                <li><span>Rating</span><span><strong>${data.rating} ★</strong></span></li>
-            </ul>
-            <button class="btn-card-details" data-brand="${selectedSlotB}" style="width:100%; margin-top:12px; padding:8px;">Details</button>
-        `;
-        slotB.classList.add('filled');
-        slotB.setAttribute('data-brand', selectedSlotB);
-        
-        slotB.querySelector('.remove-slot')?.addEventListener('click', () => {
-            selectedSlotB = null;
-            renderCompactSlots();
-            renderMattressGrid();
-            updateScoreCards();
-            updateDeepComparisonButton();
-        });
-        
-        slotB.querySelector('.btn-card-details')?.addEventListener('click', () => {
-            openModal(selectedSlotB);
-        });
-    } else {
-        slotB.innerHTML = `<div class="compact-slot-empty"><span>Select mattress</span></div>`;
-        slotB.classList.remove('filled');
-        slotB.removeAttribute('data-brand');
-    }
+    renderSlot(slotA, selectedSlotA, 'A');
+    renderSlot(slotB, selectedSlotB, 'B');
     
-    // Show/hide score cards
-    if (selectedSlotA && selectedSlotB) {
-        const scoreContainer = document.getElementById('scoreCardsContainer');
-        if (scoreContainer) scoreContainer.style.display = 'grid';
-    } else {
-        const scoreContainer = document.getElementById('scoreCardsContainer');
-        if (scoreContainer) scoreContainer.style.display = 'none';
+    const scoreContainer = document.getElementById('scoreCardsContainer');
+    if (scoreContainer) {
+        scoreContainer.style.display = (selectedSlotA && selectedSlotB) ? 'grid' : 'none';
     }
 }
 
-// ============================================
-// UPDATE SCORE CARDS with Logos and Right-Aligned Values
-// ============================================
 function updateScoreCards() {
     const scoreCardA = document.getElementById('scoreCardA');
     const scoreCardB = document.getElementById('scoreCardB');
     
-    if (selectedSlotA && mattressData[selectedSlotA]) {
-        const data = mattressData[selectedSlotA];
-        scoreCardA.innerHTML = `
-            <img src="${data.logo}" alt="${selectedSlotA}" class="brand-logo-modal" style="margin-bottom: 12px;" onerror="this.style.display='none'">
-            <div class="score-value">${data.rating}/5</div>
-            <div class="score-label">Overall Rating</div>
-            <div style="margin: 16px 0;">
-                <div class="score-detail-item"><span class="score-detail-label">Type</span><span class="score-detail-value">${data.type.split('/')[0]}</span></div>
-                <div class="score-detail-item"><span class="score-detail-label">Firmness</span><span class="score-detail-value">${data.firmnessText}</span></div>
-                <div class="score-detail-item"><span class="score-detail-label">Best For</span><span class="score-detail-value">${data.bestFor}</span></div>
-                <div class="score-detail-item"><span class="score-detail-label">Materials</span><span class="score-detail-value">${data.materials.split(',')[0]}</span></div>
-            </div>
-        `;
-    } else {
-        scoreCardA.innerHTML = `<h4>Select mattress</h4><div class="score-value">—</div>`;
+    function renderScoreCard(card, brand) {
+        if (brand && window.mattressData[brand]) {
+            const currentModel = getCurrentModel(brand);
+            const data = window.mattressData[brand];
+            card.innerHTML = `
+                <img src="${data.logo}" alt="${brand}" class="brand-logo-modal" style="margin-bottom: 6px;" onerror="this.style.display='none'">
+                <div style="font-size: 12px; font-weight: 600; margin-bottom: 2px;">${currentModel.name}</div>
+                <div class="score-value">${data.rating}/5</div>
+                <div class="score-label">Overall Rating</div>
+                <div style="margin: 8px 0;">
+                    <div class="score-detail-item"><span>Type</span><span>${currentModel.type.split('/')[0]}</span></div>
+                    <div class="score-detail-item"><span>Firmness</span><span>${currentModel.firmnessText}</span></div>
+                </div>
+            `;
+        } else {
+            card.innerHTML = `<div class="score-value">—</div><div class="score-label">Select mattress</div>`;
+        }
     }
     
-    if (selectedSlotB && mattressData[selectedSlotB]) {
-        const data = mattressData[selectedSlotB];
-        scoreCardB.innerHTML = `
-            <img src="${data.logo}" alt="${selectedSlotB}" class="brand-logo-modal" style="margin-bottom: 12px;" onerror="this.style.display='none'">
-            <div class="score-value">${data.rating}/5</div>
-            <div class="score-label">Overall Rating</div>
-            <div style="margin: 16px 0;">
-                <div class="score-detail-item"><span class="score-detail-label">Type</span><span class="score-detail-value">${data.type.split('/')[0]}</span></div>
-                <div class="score-detail-item"><span class="score-detail-label">Firmness</span><span class="score-detail-value">${data.firmnessText}</span></div>
-                <div class="score-detail-item"><span class="score-detail-label">Best For</span><span class="score-detail-value">${data.bestFor}</span></div>
-                <div class="score-detail-item"><span class="score-detail-label">Materials</span><span class="score-detail-value">${data.materials.split(',')[0]}</span></div>
-            </div>
-        `;
-    } else {
-        scoreCardB.innerHTML = `<h4>Select mattress</h4><div class="score-value">—</div>`;
-    }
+    renderScoreCard(scoreCardA, selectedSlotA);
+    renderScoreCard(scoreCardB, selectedSlotB);
 }
 
-// ============================================
-// UPDATE DEEP COMPARISON BUTTON - FIXED URL
-// ============================================
 function updateDeepComparisonButton() {
     const deepContainer = document.getElementById('deepComparisonContainer');
     const deepBtn = document.getElementById('deepComparisonBtn');
     
-    if (selectedSlotA && selectedSlotB) {
-        if (deepContainer) {
-            deepContainer.style.display = 'block';
-            if (deepBtn) {
-                const compareUrl = `detailed-comparison.html?compare=${encodeURIComponent(selectedSlotA)}|${encodeURIComponent(selectedSlotB)}`;
-                deepBtn.href = compareUrl;
-                console.log('Deep comparison URL set to:', compareUrl);
-            }
+    if (selectedSlotA && selectedSlotB && deepContainer) {
+        deepContainer.style.display = 'block';
+        if (deepBtn) {
+            const modelA = window.currentModels[selectedSlotA] || 0;
+            const modelB = window.currentModels[selectedSlotB] || 0;
+            deepBtn.href = `detailed-comparison.html?compare=${encodeURIComponent(selectedSlotA)}|${encodeURIComponent(selectedSlotB)}|${modelA}|${modelB}`;
         }
-    } else {
-        if (deepContainer) {
-            deepContainer.style.display = 'none';
-        }
+    } else if (deepContainer) {
+        deepContainer.style.display = 'none';
     }
 }
 
-// ============================================
-// SWAP COMPARISON
-// ============================================
 function swapComparison() {
     if (selectedSlotA && selectedSlotB) {
-        const temp = selectedSlotA;
-        selectedSlotA = selectedSlotB;
-        selectedSlotB = temp;
+        [selectedSlotA, selectedSlotB] = [selectedSlotB, selectedSlotA];
+        saveComparisonState();
         renderCompactSlots();
         renderMattressGrid();
         updateScoreCards();
@@ -538,189 +245,239 @@ function swapComparison() {
     }
 }
 
-// ============================================
-// OPEN MODAL with Logo (No Add to Compare button)
-// ============================================
 function openModal(brand) {
     const modal = document.getElementById('mattressModal');
     const modalContent = document.getElementById('modalContent');
-    const data = mattressData[brand];
-    
+    const data = window.mattressData[brand];
+    const currentModel = getCurrentModel(brand);
     if (!data) return;
     
     modalContent.innerHTML = `
-        <div style="text-align: center; margin-bottom: 32px;">
-            <img src="${data.logo}" alt="${brand}" class="brand-logo-modal" style="margin-bottom: 16px;" onerror="this.style.display='none'">
-            <p style="color: #6c757d;">${data.tagline}</p>
-            <div style="margin-top: 12px;"><span style="font-size: 24px; font-weight: 700;">${data.rating} ★</span> / 5</div>
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="${data.logo}" alt="${brand}" class="brand-logo-modal" onerror="this.style.display='none'">
+            <div style="font-size: 18px; font-weight: 700; margin-top: 4px;">${currentModel.name}</div>
+            <p style="color: #5a6874; font-size: 13px;">${currentModel.tagline}</p>
+            <div style="margin-top: 6px;"><span style="font-size: 24px; font-weight: 700;">${data.rating} ★</span> / 5</div>
         </div>
-        
-        <div style="margin-bottom: 24px;">
-            <h4>Overview</h4>
-            <p>${data.comfort}</p>
-        </div>
-        
-        <div style="margin-bottom: 24px;">
-            <h4>Specifications</h4>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                <div style="background: #f8f9fa; padding: 12px; border-radius: 12px;"><strong>Type</strong><br>${data.type}</div>
-                <div style="background: #f8f9fa; padding: 12px; border-radius: 12px;"><strong>Firmness</strong><br>${data.firmnessText}</div>
-                <div style="background: #f8f9fa; padding: 12px; border-radius: 12px;"><strong>Price</strong><br>${data.price}</div>
-                <div style="background: #f8f9fa; padding: 12px; border-radius: 12px;"><strong>Best For</strong><br>${data.bestFor}</div>
+        <div style="margin-bottom: 16px;">
+            <h4>Specs</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div style="background: #f8f9fa; padding: 8px; border-radius: 10px;"><strong>Type</strong><br>${currentModel.type.split('/')[0]}</div>
+                <div style="background: #f8f9fa; padding: 8px; border-radius: 10px;"><strong>Firmness</strong><br>${currentModel.firmnessText}</div>
+                <div style="background: #f8f9fa; padding: 8px; border-radius: 10px;"><strong>Price</strong><br>${currentModel.price}</div>
+                <div style="background: #f8f9fa; padding: 8px; border-radius: 10px;"><strong>Best For</strong><br>${currentModel.bestFor}</div>
             </div>
         </div>
-        
-        <div style="margin-bottom: 24px;">
-            <h4>Materials</h4>
-            <p>${data.materials}</p>
+        <div style="margin-bottom: 16px;">
+            <h4>Key Features</h4>
+            <p style="font-size: 13px;">${currentModel.keyFeatures.join(' • ')}</p>
         </div>
-        
-        <div style="display: flex; gap: 12px; margin-top: 24px;">
-            <button class="btn-outline" style="flex:1;" onclick="document.getElementById('mattressModal').style.display='none';">Close</button>
-        </div>
+        <button class="btn-outline" style="width:100%;" onclick="document.getElementById('mattressModal').style.display='none';">Close</button>
     `;
-    
     modal.style.display = 'block';
 }
 
-// ============================================
-// INITIALIZE FILTERS
-// ============================================
+function openElementModal(elementId) {
+    const modal = document.getElementById('mattressModal');
+    const modalContent = document.getElementById('modalContent');
+    
+    const elements = {
+        materials: {
+            name: "Materials",
+            icon: "assets/images/stock/Material.svg",
+            description: `<p><strong>The materials your mattress is made from is often the ultimate deciding factor in purchasing a new mattress.</strong></p>
+            <p>Each type of mattress provides different benefits and comfort. The type of mattress you choose depends on personal preference. There is no way to know for sure what mattress suits you best until you try, but we can recommend certain types of mattresses for specific needs. For example, latex and organic mattresses are recommended for those who suffer from allergies.</p>
+            <p>When selecting mattress materials, make sure to consider your primary sleep position as well. Every sleep position benefits from a different type of mattress.</p>
+            <p>If you are unsure what type of mattress would work the best for you, one of the experts at SleePare can recommend your perfect mattress!</p>`
+        },
+        brand: {
+            name: "Brand & Reputation",
+            icon: "assets/images/stock/Brand.svg",
+            description: `<p><strong>With so many brands available, it can be difficult to decide which ones are worth checking out.</strong></p>
+            <p>If you find a mattress that catches your eye, do some research on the brand before moving forward with a purchase. Make sure to purchase from a reputable brand and read credible reviews from customers and mattress review websites like SleePare.</p>
+            <p>Once you decide on a brand, additional information about the brand can help you decide on your purchase. Make sure to research important information like return policy, warranties, delivery, and trial periods before making a purchase.</p>`
+        },
+        bodyType: {
+            name: "Body Type Suitability",
+            icon: "assets/images/stock/Body-Type.svg",
+            description: `<p><strong>Many people do not consider their body type when purchasing and comparing mattresses.</strong></p>
+            <p>Support and pressure distribution varies for different body types and builds. Visit our website to learn more about the best mattresses for heavier individuals.</p>`
+        },
+        couples: {
+            name: "Couples Adjustability",
+            icon: "assets/images/stock/Couple.svg",
+            description: `<p><strong>Sleeping with a partner brings its own set of challenges.</strong></p>
+            <p>If you are sleeping with someone else, it is best to consider features that make sleeping with a partner more comfortable. Features that work the best for couples include edge support, motion isolation, and mattresses with adjustable or more than one comfortable level.</p>`
+        },
+        price: {
+            name: "Price & Value",
+            icon: "assets/images/stock/Price.svg",
+            description: `<p><strong>Setting a budget once you start shopping lets you narrow down your selections so you can pick the best option for your body and wallet.</strong></p>
+            <p>Often, higher-priced, luxury mattresses come with more features and fluff than value and functionality. Narrowing down your choices will help you find a quality mattress that will last and include the features you want without paying for unneeded features.</p>
+            <div class="price-info-card">
+                <h4>Price Guide by Mattress Type</h4>
+                <table class="price-info-table">
+                    <tr><td><strong>Memory Foam</strong></td><td>Under $600 - $1,200+</td></tr>
+                    <tr><td><strong>Hybrid</strong></td><td>Under $1,500 - $2,200+</td></tr>
+                    <tr><td><strong>Latex</strong></td><td>Under $1,500 - $2,500+</td></tr>
+                    <tr><td><strong>Innerspring</strong></td><td>Under $700 - $1,200+</td></tr>
+                </table>
+                <p style="font-size: 12px; margin-top: 12px; color: #666;">*Queen size prices shown. Premium models may cost more.</p>
+            </div>`
+        }
+    };
+    
+    const el = elements[elementId];
+    if (!el) return;
+    
+    modalContent.innerHTML = `
+        <div style="text-align: center; margin-bottom: 24px;">
+            <div class="element-modal-icon" style="background-image: url('${el.icon}'); background-size: contain; background-repeat: no-repeat; background-position: center; width: 80px; height: 80px; margin: 0 auto 16px auto;"></div>
+            <h3 style="margin-bottom: 8px;">${el.name}</h3>
+        </div>
+        <div style="margin-bottom: 24px; line-height: 1.6;">
+            ${el.description}
+        </div>
+        <button class="btn-outline" style="width:100%;" onclick="document.getElementById('mattressModal').style.display='none';">Close</button>
+    `;
+    modal.style.display = 'block';
+}
+
+function renderTopComparisons() {
+    const grid = document.getElementById('comparisonsGrid');
+    if (!grid || !window.topComparisons) return;
+    
+    grid.innerHTML = window.topComparisons.map(comp => {
+        const brand1 = window.mattressData[comp.brand1];
+        const brand2 = window.mattressData[comp.brand2];
+        if (!brand1 || !brand2) return '';
+        return `
+            <div class="comparison-tag" data-m1="${comp.brand1}" data-m2="${comp.brand2}">
+                <div class="logo-wrapper">
+                    <img src="${brand1.logo}" alt="${comp.brand1}" class="brand-logo-tag" onerror="this.style.display='none'">
+                    <span>${comp.brand1}</span>
+                </div>
+                <span class="vs-text">VS</span>
+                <div class="logo-wrapper">
+                    <img src="${brand2.logo}" alt="${comp.brand2}" class="brand-logo-tag" onerror="this.style.display='none'">
+                    <span>${comp.brand2}</span>
+                </div>
+            </div>
+        `;
+    }).join('');
+    
+    document.querySelectorAll('.comparison-tag').forEach(tag => {
+        tag.addEventListener('click', () => {
+            const brand1 = tag.getAttribute('data-m1');
+            const brand2 = tag.getAttribute('data-m2');
+            if (brand1 && brand2) {
+                selectedSlotA = brand1;
+                selectedSlotB = brand2;
+                saveComparisonState();
+                renderCompactSlots();
+                renderMattressGrid();
+                updateScoreCards();
+                updateDeepComparisonButton();
+            }
+        });
+    });
+}
+
 function initFilters() {
     const sleepSelect = document.getElementById('sleepPositionSelect');
     const typeSelect = document.getElementById('typeSelect');
     const budgetSelect = document.getElementById('budgetSelect');
     const resetBtn = document.getElementById('resetFiltersSimple');
     
-    if (sleepSelect) {
-        sleepSelect.addEventListener('change', () => {
-            currentFilters.sleepPosition = sleepSelect.value;
-            renderMattressGrid();
-        });
-    }
+    if (sleepSelect) sleepSelect.value = currentFilters.sleepPosition;
+    if (typeSelect) typeSelect.value = currentFilters.type;
+    if (budgetSelect) budgetSelect.value = currentFilters.budget;
     
-    if (typeSelect) {
-        typeSelect.addEventListener('change', () => {
-            currentFilters.type = typeSelect.value;
-            renderMattressGrid();
-        });
-    }
-    
-    if (budgetSelect) {
-        budgetSelect.addEventListener('change', () => {
-            currentFilters.budget = budgetSelect.value;
-            renderMattressGrid();
-        });
-    }
-    
-    if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-            if (sleepSelect) sleepSelect.value = 'all';
-            if (typeSelect) typeSelect.value = 'all';
-            if (budgetSelect) budgetSelect.value = 'all';
-            currentFilters = { sleepPosition: 'all', type: 'all', budget: 'all' };
-            renderMattressGrid();
-        });
-    }
+    if (sleepSelect) sleepSelect.addEventListener('change', () => {
+        currentFilters.sleepPosition = sleepSelect.value;
+        saveComparisonState();
+        renderMattressGrid();
+    });
+    if (typeSelect) typeSelect.addEventListener('change', () => {
+        currentFilters.type = typeSelect.value;
+        saveComparisonState();
+        renderMattressGrid();
+    });
+    if (budgetSelect) budgetSelect.addEventListener('change', () => {
+        currentFilters.budget = budgetSelect.value;
+        saveComparisonState();
+        renderMattressGrid();
+    });
+    if (resetBtn) resetBtn.addEventListener('click', () => {
+        if (sleepSelect) sleepSelect.value = 'all';
+        if (typeSelect) typeSelect.value = 'all';
+        if (budgetSelect) budgetSelect.value = 'all';
+        currentFilters = { sleepPosition: 'all', type: 'all', budget: 'all' };
+        saveComparisonState();
+        renderMattressGrid();
+    });
 }
 
-// ============================================
-// INITIALIZE FAQ ACCORDION
-// ============================================
-function initFaqAccordion() {
-    document.querySelectorAll('.faq-item').forEach(item => {
+function initFaq() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
-        if (question) {
-            question.addEventListener('click', () => {
+        const answer = item.querySelector('.faq-answer');
+        if (question && answer) {
+            answer.style.maxHeight = '0px';
+            answer.style.overflow = 'hidden';
+            answer.style.transition = 'max-height 0.25s ease-out';
+            question.addEventListener('click', (e) => {
+                e.preventDefault();
                 item.classList.toggle('active');
+                if (item.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                } else {
+                    answer.style.maxHeight = '0px';
+                }
             });
         }
     });
 }
 
-// ============================================
-// INITIALIZE MODAL CLOSE
-// ============================================
+function initElements() {
+    document.querySelectorAll('.element-card').forEach((card) => {
+        const elementType = card.getAttribute('data-element');
+        card.addEventListener('click', () => {
+            openElementModal(elementType);
+        });
+    });
+}
+
 function initModal() {
     const modal = document.getElementById('mattressModal');
     const closeBtn = document.querySelector('.modal-close');
-    
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            if (modal) modal.style.display = 'none';
-        });
-    }
-    
+    if (closeBtn) closeBtn.addEventListener('click', () => modal.style.display = 'none');
     window.addEventListener('click', (e) => {
-        if (modal && e.target === modal) {
-            modal.style.display = 'none';
-        }
+        if (modal && e.target === modal) modal.style.display = 'none';
     });
 }
 
-// ============================================
-// INITIALIZE SWAP BUTTON (Icon version)
-// ============================================
-function initSwapButton() {
-    const swapBtn = document.getElementById('swapCompact');
-    if (swapBtn) {
-        swapBtn.addEventListener('click', swapComparison);
+function checkAndInit() {
+    if (window.dataLoaded && Object.keys(window.mattressData).length > 0) {
+        console.log('✅ Data ready, initializing app...');
+        renderTopComparisons();
+        renderMattressGrid();
+        renderCompactSlots();
+        initFilters();
+        initFaq();
+        initElements();
+        initModal();
+        const swapBtn = document.getElementById('swapCompact');
+        if (swapBtn) swapBtn.addEventListener('click', swapComparison);
+        updateDeepComparisonButton();
+        console.log('✅ App initialized');
+    } else {
+        setTimeout(checkAndInit, 100);
     }
 }
 
-// ============================================
-// SCROLL REVEAL
-// ============================================
-function initScrollReveal() {
-    const elements = document.querySelectorAll('.element-card, .faq-item, .comparison-tag');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    elements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
-}
-
-// ============================================
-// ADD HERO ANIMATIONS
-// ============================================
-function initHeroAnimations() {
-    const heroElements = document.querySelectorAll('.hero-content > *');
-    heroElements.forEach((el, i) => {
-        el.classList.add('animate-fade-in-up');
-        el.style.animationDelay = `${0.1 + i * 0.1}s`;
-    });
-}
-
-// ============================================
-// INITIALIZE ALL
-// ============================================
-document.addEventListener('DOMContentLoaded', () => {
-    // Render all components
-    renderTopComparisons();
-    renderMattressGrid();
-    renderCompactSlots();
-    
-    // Initialize interactive features
-    initFilters();
-    initFaqAccordion();
-    initModal();
-    initSwapButton();
-    initScrollReveal();
-    initHeroAnimations();
-    
-    // Update deep comparison button visibility
-    updateDeepComparisonButton();
-    
-    console.log('SleePare Comparison Tool initialized - v2.0');
+document.addEventListener('DOMContentLoaded', async () => {
+    await loadMattressData();
+    checkAndInit();
 });

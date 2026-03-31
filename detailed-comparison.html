@@ -1,962 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>SleePare | Detailed Mattress Comparison - Side by Side Review</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SleePare | Detailed Mattress Comparison</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <style>
         /* Detailed Comparison Page Styles */
-        .breadcrumb-nav {
-            padding: 24px 0 0 0;
-            margin-bottom: 24px;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--heading-color);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            transition: var(--transition-fast);
-            font-family: 'Work Sans', sans-serif;
-        }
-
-        .back-link:hover {
-            color: #5E00FF;
-            transform: translateX(-4px);
-        }
-
-        .comparison-hero {
+        .comparison-header {
             background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
-            border-radius: 32px;
-            padding: 40px 48px;
-            margin-bottom: 48px;
+            border-radius: 28px;
+            padding: 32px 40px;
+            margin-bottom: 40px;
             border: 1px solid var(--border-light);
         }
-
-        .brand-vs-logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .brand-item {
-            text-align: center;
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .brand-logo-large {
-            max-width: 180px;
-            height: auto;
-            max-height: 70px;
-            object-fit: contain;
-            margin-bottom: 16px;
-        }
-
-        .vs-circle {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 800;
-            font-size: 28px;
-            font-family: 'Work Sans', sans-serif;
-            box-shadow: var(--shadow-md);
-        }
-
-        .benefits-strip {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-top: 40px;
-            padding-top: 32px;
-            border-top: 1px solid var(--border-light);
-        }
-
-        .benefit-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--heading-color);
-        }
-
-        .quick-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            margin-bottom: 64px;
-        }
-
-        .quick-card {
-            background: var(--white);
-            border-radius: 24px;
-            padding: 28px;
+        
+        .brand-card {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
             border: 1px solid var(--border-light);
-            transition: var(--transition-normal);
-            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
         }
-
-        .quick-card:hover {
+        
+        .brand-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-md);
         }
-
-        .brand-name-header {
-            font-size: 28px;
-            margin: 16px 0 8px;
+        
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .spec-table th {
+            background: var(--bg-light);
+            padding: 16px 20px;
+            text-align: left;
+            font-weight: 600;
             color: var(--heading-color);
-            font-weight: 700;
         }
-
-        .star-rating {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin: 12px 0;
+        
+        .spec-table td {
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--border-light);
         }
-
-        .stars {
-            color: #FFB800;
-            letter-spacing: 2px;
-            font-size: 18px;
+        
+        .spec-table tr:last-child td {
+            border-bottom: none;
         }
-
-        .feature-tags {
+        
+        .score-badge {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid var(--border-light);
+        }
+        
+        .expert-quote {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 16px;
+            margin-top: 16px;
+            border-left: 3px solid var(--primary);
+            font-style: italic;
+            font-size: 14px;
+            color: #5a6874;
+        }
+        
+        .feature-list {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             margin: 16px 0;
         }
-
-        .tag {
-            background: var(--bg-light);
-            padding: 6px 14px;
-            border-radius: 40px;
+        
+        .feature-tag {
+            background: rgba(44, 95, 138, 0.1);
+            color: var(--accent-blue);
+            padding: 4px 12px;
+            border-radius: 20px;
             font-size: 12px;
-            font-weight: 600;
-            color: #5E00FF;
-            border: 1px solid var(--border-light);
+            font-weight: 500;
         }
-
-        .spec-table-wrapper {
-            overflow-x: auto;
-            background: var(--white);
-            border-radius: 24px;
-            border: 1px solid var(--border-light);
-            margin: 40px 0;
+        
+        .summary-section {
+            background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
+            border-radius: 20px;
+            padding: 28px;
+            margin: 32px 0;
         }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-family: 'Work Sans', sans-serif;
-        }
-
-        .comparison-table th {
-            background: var(--bg-light);
-            font-weight: 700;
-            padding: 20px 24px;
-            font-size: 16px;
-            text-align: left;
-            color: var(--heading-color);
-        }
-
-        .comparison-table td {
-            padding: 16px 24px;
+        
+        .summary-item {
+            padding: 16px 0;
             border-bottom: 1px solid var(--border-light);
-            vertical-align: top;
         }
-
-        .comparison-table tr:last-child td {
+        
+        .summary-item:last-child {
             border-bottom: none;
         }
-
-        .spec-label {
-            font-weight: 700;
-            color: var(--heading-color);
-            background: #f8f9ff;
-            width: 28%;
+        
+        .winner-badge {
+            background: var(--accent-blue);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 8px;
         }
-
-        .firmness-bar {
+        
+        .bottom-line {
+            background: var(--heading-color);
+            color: white;
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .bottom-line h3 {
+            color: white;
+            margin-bottom: 16px;
+        }
+        
+        .firmness-bar-container {
             background: #e9ecef;
             height: 8px;
             border-radius: 10px;
             width: 100%;
             margin-top: 8px;
         }
-
+        
         .firmness-fill {
             height: 8px;
             border-radius: 10px;
             background: var(--gradient-primary);
             width: 0%;
         }
-
-        .chart-container {
-            background: var(--white);
-            border-radius: 24px;
-            padding: 32px;
-            border: 1px solid var(--border-light);
-            margin: 40px 0;
-        }
-
-        .chart-canvas-wrapper {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .review-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            margin: 40px 0;
-        }
-
-        .review-card {
-            background: var(--white);
-            border-radius: 24px;
-            padding: 28px;
-            border: 1px solid var(--border-light);
-        }
-
-        .expert-quote {
-            font-style: italic;
-            background: var(--bg-light);
-            padding: 20px;
-            border-radius: 16px;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #495057;
-            border-left: 3px solid #5E00FF;
-        }
-
-        .cta-showroom {
-            background: linear-gradient(135deg, var(--heading-color) 0%, #1a2360 100%);
-            border-radius: 32px;
-            padding: 60px 48px;
-            text-align: center;
-            margin: 60px 0;
-        }
-
-        .cta-showroom h3 {
-            color: white;
-            margin-bottom: 16px;
-        }
-
-        .cta-showroom p {
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 700px;
-            margin: 0 auto 24px;
-        }
-
-        .cta-showroom .btn-primary {
-            background: white;
-            color: var(--heading-color);
-        }
-
-        .cta-showroom .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.3);
-        }
-
-        .floating-back-btn {
-            position: fixed;
-            bottom: 32px;
-            right: 32px;
-            background: var(--gradient-primary);
-            color: white;
-            width: 52px;
-            height: 52px;
-            border-radius: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: var(--shadow-lg);
-            transition: var(--transition-normal);
-            z-index: 100;
-            border: none;
-            cursor: pointer;
-        }
-
-        .floating-back-btn:hover {
-            transform: scale(1.08) translateY(-4px);
-        }
-
-        .error-message {
-            text-align: center;
-            padding: 80px 20px;
-            background: var(--bg-light);
-            border-radius: 32px;
-        }
-
-        .error-message .btn-primary {
-            margin-top: 24px;
-            display: inline-block;
-        }
-
-        @media (max-width: 768px) {
-            .comparison-hero {
-                padding: 24px;
-            }
-
-            .quick-cards {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .review-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .brand-vs-logo {
-                gap: 20px;
-            }
-
-            .vs-circle {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-
-            .brand-logo-large {
-                max-width: 130px;
-            }
-
-            .comparison-table th,
-            .comparison-table td {
-                padding: 12px 16px;
-            }
-
-            .floating-back-btn {
-                bottom: 20px;
-                right: 20px;
-                width: 48px;
-                height: 48px;
-            }
-
-            .benefits-strip {
-                justify-content: center;
-            }
-
-            .benefit-item {
-                font-size: 12px;
-            }
-
-            .cta-showroom {
-                padding: 40px 24px;
-            }
-        }
     </style>
 </head>
-
 <body>
 
     <div class="container">
-        <!-- Breadcrumb Navigation -->
-        <div class="breadcrumb-nav">
-            <a href="index.html" class="back-link">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+        <div style="padding: 24px 0 0 0; margin-bottom: 24px;">
+            <a href="index.html" id="backLink" style="display: inline-flex; align-items: center; gap: 8px; color: var(--heading-color); text-decoration: none; font-weight: 600; font-size: 14px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18L9 12L15 6"/></svg>
                 Back to Comparison Tool
             </a>
         </div>
 
-        <!-- Dynamic Comparison Content -->
         <div id="comparisonContent">
-            <!-- Content will be injected by JavaScript -->
-            <div class="error-message" id="loadingPlaceholder">
-                <div class="section-tag">Loading</div>
+            <div class="error-message">
+                <div class="section-tag purple">Loading</div>
                 <h2>Loading comparison data...</h2>
-                <p>Please wait while we prepare your mattress comparison.</p>
             </div>
         </div>
     </div>
 
-    <!-- Floating Back Button -->
-    <a href="index.html" class="floating-back-btn" aria-label="Back to comparison tool">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-            <path d="M19 12H5M12 19L5 12L12 5" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
+    <a href="index.html" class="floating-back-btn" id="floatingBackBtn" aria-label="Back">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M19 12H5M12 19L5 12L12 5"/></svg>
     </a>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <script>
-        // ============================================
-        // MATTRESS DATABASE (Complete copy)
-        // ============================================
-        const mattressData = {
-            "Casper": {
-                logo: "assets/images/brands/casper-logo.png",
-                type: "Memory Foam / Hybrid",
-                comfort: "Medium-firm, zoned support",
-                value: "Great value — top rated",
-                price: "$1,095 – $2,295",
-                priceValue: 1200,
-                materials: "AirScape foam, zoned support",
-                firmness: 6.5,
-                firmnessText: "Medium-firm",
-                rating: 4.8,
-                bestFor: "Back sleepers, couples",
-                sleepPosition: ["back", "combination"],
-                tagline: "Engineered for the way you sleep",
-                warranty: "10 years limited",
-                trial: "100 nights",
-                cooling: "AirScape breathable foam",
-                motionIsolation: "Excellent",
-                edgeSupport: "Good",
-                sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King"],
-                shipping: "Free shipping, compressed in a box",
-                scores: { type: 8, support: 9, value: 9, price: 7, materials: 8 },
-                accentColor: "#2C5F8A",
-                expertSummary: "The Casper Original features Zoned Support that provides targeted pressure relief. Its AirScape foam keeps sleepers cool while delivering balanced comfort.",
-                customerRatingCount: 429,
-                customerComfort: 4.7,
-                customerSupport: 4.6,
-                customerCooling: 4.4,
-                keyFeatures: ["Cooling", "Zoned Support", "Medium-firm", "Motion Isolation"]
-            },
-            "Leesa": {
-                logo: "assets/images/brands/leesa-logo.png",
-                type: "Foam / Hybrid",
-                comfort: "Medium-firm, pressure relief",
-                value: "High value, social impact",
-                price: "$999 – $2,099",
-                priceValue: 1000,
-                materials: "3-layer foam, cooling top",
-                firmness: 6,
-                firmnessText: "Medium",
-                rating: 4.7,
-                bestFor: "All sleep positions",
-                sleepPosition: ["back", "side", "stomach", "combination"],
-                tagline: "Sleep better, do good",
-                warranty: "10 years",
-                trial: "100 nights",
-                cooling: "Cooling top layer, breathable foam",
-                motionIsolation: "Excellent",
-                edgeSupport: "Very Good",
-                sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King"],
-                shipping: "Free shipping & returns",
-                scores: { type: 8, support: 9, value: 9, price: 8, materials: 8 },
-                accentColor: "#4A6A5E",
-                expertSummary: "Leesa combines three premium foam layers for universal comfort. Known for pressure relief and excellent motion isolation, it's ideal for all sleep positions.",
-                customerRatingCount: 272,
-                customerComfort: 4.8,
-                customerSupport: 4.7,
-                customerCooling: 4.5,
-                keyFeatures: ["Pressure Relief", "Universal Comfort", "Cooling Top", "Eco-friendly"]
-            },
-            "Purple": {
-                logo: "assets/images/brands/purple-logo.png",
-                type: "Hyper-Elastic Polymer",
-                comfort: "Soft yet supportive, cooling grid",
-                value: "Premium cooling technology",
-                price: "$1,399 – $3,498",
-                priceValue: 1800,
-                materials: "Purple Grid, breathable cover",
-                firmness: 5,
-                firmnessText: "Medium-soft",
-                rating: 4.6,
-                bestFor: "Hot sleepers, combo sleepers",
-                sleepPosition: ["side", "combination"],
-                tagline: "No pressure, all comfort",
-                warranty: "10 years",
-                trial: "100 nights",
-                cooling: "Purple Grid hyper-elastic polymer",
-                motionIsolation: "Very Good",
-                edgeSupport: "Good",
-                sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King", "Split King"],
-                shipping: "Free shipping",
-                scores: { type: 9, support: 8, value: 8, price: 6, materials: 9 },
-                accentColor: "#6A1B9A",
-                expertSummary: "The Purple Grid flexes under pressure points while supporting the rest of the body. It's uniquely cooling and ideal for hot sleepers.",
-                customerRatingCount: 512,
-                customerComfort: 4.6,
-                customerSupport: 4.5,
-                customerCooling: 4.9,
-                keyFeatures: ["Hyper-Elastic Grid", "Cooling", "Pressure Relief", "Durable"]
-            },
-            "Nest Bedding": {
-                logo: "assets/images/brands/nest-bedding-logo.png",
-                type: "Hybrid / Latex",
-                comfort: "Customizable firmness",
-                value: "Organic, eco-friendly",
-                price: "$1,099 – $2,399",
-                priceValue: 1500,
-                materials: "Organic cotton, natural latex",
-                firmness: 6,
-                firmnessText: "Selectable",
-                rating: 4.9,
-                bestFor: "Eco-conscious shoppers",
-                sleepPosition: ["back", "side", "stomach", "combination"],
-                tagline: "Handcrafted in the USA",
-                warranty: "Lifetime",
-                trial: "365 nights",
-                cooling: "Natural latex, breathable cover",
-                motionIsolation: "Good",
-                edgeSupport: "Excellent",
-                sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King"],
-                shipping: "Free white glove delivery",
-                scores: { type: 9, support: 9, value: 9, price: 7, materials: 10 },
-                accentColor: "#2E7D64",
-                expertSummary: "Nest Bedding offers customizable firmness and organic materials. It's one of the most eco-friendly luxury mattresses on the market.",
-                customerRatingCount: 348,
-                customerComfort: 4.9,
-                customerSupport: 4.8,
-                customerCooling: 4.6,
-                keyFeatures: ["Organic", "Customizable", "Eco-friendly", "Handcrafted"]
-            },
-            "Saatva": {
-                logo: "assets/images/brands/saatva-logo.png",
-                type: "Innerspring Hybrid",
-                comfort: "Lumbar support, luxury feel",
-                value: "Premium, eco-friendly",
-                price: "$1,295 – $2,590",
-                priceValue: 1600,
-                materials: "Organic cotton, coil-on-coil",
-                firmness: 7,
-                firmnessText: "Medium-firm to firm",
-                rating: 4.9,
-                bestFor: "Back pain sufferers",
-                sleepPosition: ["back", "stomach"],
-                tagline: "Luxury without the markup",
-                warranty: "Lifetime",
-                trial: "365 nights",
-                cooling: "Organic cotton cover, breathable coils",
-                motionIsolation: "Fair",
-                edgeSupport: "Excellent",
-                sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King", "Split King"],
-                shipping: "Free white glove delivery",
-                scores: { type: 8, support: 10, value: 9, price: 7, materials: 9 },
-                accentColor: "#B76E2E",
-                expertSummary: "Saatva's coil-on-coil construction provides exceptional lumbar support. It's a favorite among those with back pain.",
-                customerRatingCount: 892,
-                customerComfort: 4.8,
-                customerSupport: 4.9,
-                customerCooling: 4.7,
-                keyFeatures: ["Lumbar Support", "Luxury", "Organic", "Spinal Alignment"]
-            },
-            "Helix": {
-                logo: "assets/images/brands/helix-logo.png",
-                type: "Hybrid (Personalized)",
-                comfort: "Tailored to your body",
-                value: "High customization",
-                price: "$936 – $2,349",
-                priceValue: 1100,
-                materials: "DuraDense foam, wrapped coils",
-                firmness: 5.5,
-                firmnessText: "Customizable",
-                rating: 4.7,
-                bestFor: "Personalized comfort",
-                sleepPosition: ["back", "side", "stomach", "combination"],
-                tagline: "Made for you",
-                warranty: "10 years",
-                trial: "100 nights",
-                cooling: "Gel-infused foam, breathable cover",
-                motionIsolation: "Good",
-                edgeSupport: "Very Good",
-                sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King"],
-                shipping: "Free shipping",
-                scores: { type: 9, support: 9, value: 8, price: 8, materials: 8 },
-                accentColor: "#00A86B",
-                expertSummary: "Helix offers a personalized sleep experience with a quiz that matches you to the perfect firmness and support level.",
-                customerRatingCount: 567,
-                customerComfort: 4.7,
-                customerSupport: 4.7,
-                customerCooling: 4.5,
-                keyFeatures: ["Personalized", "Hybrid", "Cooling", "Custom Firmness"]
-            },
-            "Tempur-Pedic": {
-                logo: "assets/images/brands/tempur-pedic-logo.png",
-                type: "Memory Foam",
-                comfort: "Deep contouring, pressure relief",
-                value: "Luxury, long-lasting",
-                price: "$1,899 – $5,000+",
-                priceValue: 3000,
-                materials: "Tempur material, cooling tech",
-                firmness: 6,
-                firmnessText: "Soft to firm options",
-                rating: 4.8,
-                bestFor: "Pressure point relief",
-                sleepPosition: ["back", "side"],
-                tagline: "The original memory foam",
-                warranty: "10 years",
-                trial: "90 nights",
-                cooling: "Tempur-APR+ cooling",
-                motionIsolation: "Superior",
-                edgeSupport: "Excellent",
-                sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King", "Split King"],
-                shipping: "White glove delivery",
-                scores: { type: 9, support: 10, value: 7, price: 4, materials: 10 },
-                accentColor: "#8B4513",
-                expertSummary: "Tempur-Pedic's proprietary memory foam conforms to your body for unparalleled pressure relief and motion isolation.",
-                customerRatingCount: 1245,
-                customerComfort: 4.8,
-                customerSupport: 4.9,
-                customerCooling: 4.3,
-                keyFeatures: ["Memory Foam", "Pressure Relief", "Motion Isolation", "Premium"]
-            },
-            "DreamCloud": {
-                logo: "assets/images/brands/dreamcloud-logo.png",
-                type: "Hybrid Luxury",
-                comfort: "Medium-firm, cashmere cover",
-                value: "Luxury at accessible price",
-                price: "$899 – $1,399",
-                priceValue: 1000,
-                materials: "Gel foam, innerspring coils",
-                firmness: 6.5,
-                firmnessText: "Medium-firm",
-                rating: 4.7,
-                bestFor: "Luxury on a budget",
-                sleepPosition: ["back", "stomach"],
-                tagline: "Luxury you can afford",
-                warranty: "Lifetime",
-                trial: "365 nights",
-                cooling: "Gel memory foam, cashmere cover",
-                motionIsolation: "Good",
-                edgeSupport: "Excellent",
-                sizes: ["Twin", "Twin XL", "Full", "Queen", "King", "Cal King"],
-                shipping: "Free white glove delivery",
-                scores: { type: 8, support: 8, value: 9, price: 9, materials: 8 },
-                accentColor: "#4B6A9B",
-                expertSummary: "DreamCloud brings luxury hybrid construction at an accessible price point with a lifetime warranty and 365-night trial.",
-                customerRatingCount: 734,
-                customerComfort: 4.7,
-                customerSupport: 4.6,
-                customerCooling: 4.5,
-                keyFeatures: ["Luxury Hybrid", "Cashmere Cover", "Lifetime Warranty", "Value"]
-            }
-        };
-
-        // Helper: Get URL parameter
-        function getUrlParameter(name) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(name);
-        }
-
-        // Render star rating HTML
-        function renderStars(rating) {
-            const fullStars = Math.floor(rating);
-            const halfStar = rating % 1 >= 0.5;
-            let starsHtml = '';
-            for (let i = 0; i < fullStars; i++) starsHtml += '★';
-            if (halfStar) starsHtml += '½';
-            const emptyStars = 5 - Math.ceil(rating);
-            for (let i = 0; i < emptyStars; i++) starsHtml += '☆';
-            return `<span class="stars">${starsHtml}</span> <strong>${rating}/5</strong>`;
-        }
-
-        // Generate firmness bar visual
-        function firmnessBar(value) {
-            const percent = (value / 10) * 100;
-            return `<div class="firmness-bar"><div class="firmness-fill" style="width: ${percent}%;"></div></div>`;
-        }
-
-        // Render the complete detailed comparison page
-        function renderDetailedComparison(brandA, brandB) {
-            const dataA = mattressData[brandA];
-            const dataB = mattressData[brandB];
-            
-            console.log('Rendering comparison for:', brandA, brandB);
-            console.log('Data A:', dataA);
-            console.log('Data B:', dataB);
-            
-            if (!dataA || !dataB) {
-                document.getElementById('comparisonContent').innerHTML = `
-                    <div class="error-message">
-                        <div class="section-tag">Error</div>
-                        <h2>Invalid Mattress Selection</h2>
-                        <p>One or both mattress brands could not be found. Please return to the comparison tool and select valid brands.</p>
-                        <a href="index.html" class="btn-primary" style="margin-top: 24px; display: inline-block;">Back to Comparison Tool</a>
-                    </div>
-                `;
-                return;
-            }
-
-            const accentA = dataA.accentColor || "#5E00FF";
-            const accentB = dataB.accentColor || "#C800FF";
-
-            const html = `
-                <!-- Comparison Hero with Logos -->
-                <div class="comparison-hero">
-                    <div class="brand-vs-logo">
-                        <div class="brand-item">
-                            <img src="${dataA.logo}" alt="${brandA} logo" class="brand-logo-large" onerror="this.style.display='none'; this.parentElement.querySelector('.brand-fallback').style.display='block';">
-                            <div class="brand-fallback" style="display: none; font-size: 24px; font-weight: 700;">${brandA}</div>
-                            <div class="brand-name-header">${brandA}</div>
-                            <div class="star-rating">${renderStars(dataA.rating)}</div>
-                        </div>
-                        <div class="vs-circle">VS</div>
-                        <div class="brand-item">
-                            <img src="${dataB.logo}" alt="${brandB} logo" class="brand-logo-large" onerror="this.style.display='none'; this.parentElement.querySelector('.brand-fallback').style.display='block';">
-                            <div class="brand-fallback" style="display: none; font-size: 24px; font-weight: 700;">${brandB}</div>
-                            <div class="brand-name-header">${brandB}</div>
-                            <div class="star-rating">${renderStars(dataB.rating)}</div>
-                        </div>
-                    </div>
-                    <div class="benefits-strip">
-                        <div class="benefit-item"><span>✅</span> Free delivery across US & Canada</div>
-                        <div class="benefit-item"><span>💰</span> Best price guarantee</div>
-                        <div class="benefit-item"><span>🌙</span> Extended 120-day sleep trial</div>
-                        <div class="benefit-item"><span>🛏️</span> Free in-store mattress testing</div>
-                    </div>
-                </div>
-
-                <!-- Quick Comparison Cards -->
-                <div class="quick-cards">
-                    <div class="quick-card">
-                        <img src="${dataA.logo}" alt="${brandA}" style="max-height: 48px; object-fit: contain; margin-bottom: 16px;" onerror="this.style.display='none'">
-                        <div class="feature-tags">
-                            ${dataA.keyFeatures.map(f => `<span class="tag">${f}</span>`).join('')}
-                        </div>
-                        <p><strong>${dataA.tagline}</strong></p>
-                        <div><strong>Price:</strong> ${dataA.price}</div>
-                        <div><strong>Type:</strong> ${dataA.type}</div>
-                        <div><strong>Firmness:</strong> ${dataA.firmnessText} ${firmnessBar(dataA.firmness)}</div>
-                        <div><strong>Best For:</strong> ${dataA.bestFor}</div>
-                        <div style="margin-top: 20px;"><a href="#" class="btn-outline" style="display: inline-block; padding: 10px 20px; font-size: 14px;">Visit Store</a></div>
-                    </div>
-                    <div class="quick-card">
-                        <img src="${dataB.logo}" alt="${brandB}" style="max-height: 48px; object-fit: contain; margin-bottom: 16px;" onerror="this.style.display='none'">
-                        <div class="feature-tags">
-                            ${dataB.keyFeatures.map(f => `<span class="tag">${f}</span>`).join('')}
-                        </div>
-                        <p><strong>${dataB.tagline}</strong></p>
-                        <div><strong>Price:</strong> ${dataB.price}</div>
-                        <div><strong>Type:</strong> ${dataB.type}</div>
-                        <div><strong>Firmness:</strong> ${dataB.firmnessText} ${firmnessBar(dataB.firmness)}</div>
-                        <div><strong>Best For:</strong> ${dataB.bestFor}</div>
-                        <div style="margin-top: 20px;"><a href="#" class="btn-outline" style="display: inline-block; padding: 10px 20px; font-size: 14px;">Visit Store</a></div>
-                    </div>
-                </div>
-
-                <!-- Detailed Specs Table -->
-                <div class="spec-table-wrapper">
-                    <table class="comparison-table">
-                        <thead>
-                            <tr><th>Specifications</th><th>${brandA}</th><th>${brandB}</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td class="spec-label">Mattress Type</td><td>${dataA.type}</td><td>${dataB.type}</td></tr>
-                            <tr><td class="spec-label">Firmness (1-10)</td><td>${dataA.firmnessText} (${dataA.firmness}/10) ${firmnessBar(dataA.firmness)}</td><td>${dataB.firmnessText} (${dataB.firmness}/10) ${firmnessBar(dataB.firmness)}</td></tr>
-                            <tr><td class="spec-label">Price Range (Queen)</td><td>${dataA.price}</td><td>${dataB.price}</td></tr>
-                            <tr><td class="spec-label">Overall Rating</td><td>${dataA.rating} ★ (expert score)</td><td>${dataB.rating} ★ (expert score)</td></tr>
-                            <tr><td class="spec-label">Materials</td><td>${dataA.materials}</td><td>${dataB.materials}</td></tr>
-                            <tr><td class="spec-label">Warranty</td><td>${dataA.warranty}</td><td>${dataB.warranty}</td></tr>
-                            <tr><td class="spec-label">Sleep Trial</td><td>${dataA.trial}</td><td>${dataB.trial}</td></tr>
-                            <tr><td class="spec-label">Cooling Technology</td><td>${dataA.cooling}</td><td>${dataB.cooling}</td></tr>
-                            <tr><td class="spec-label">Motion Isolation</td><td>${dataA.motionIsolation}</td><td>${dataB.motionIsolation}</td></tr>
-                            <tr><td class="spec-label">Edge Support</td><td>${dataA.edgeSupport}</td><td>${dataB.edgeSupport}</td></tr>
-                            <tr><td class="spec-label">Best For Sleep Position</td><td>${dataA.bestFor}</td><td>${dataB.bestFor}</td></tr>
-                            <tr><td class="spec-label">Available Sizes</td><td>${dataA.sizes.join(', ')}</td><td>${dataB.sizes.join(', ')}</td></tr>
-                            <tr><td class="spec-label">Shipping & Delivery</td><td>${dataA.shipping}</td><td>${dataB.shipping}</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Radar Chart: 5 Elements -->
-                <div class="chart-container">
-                    <div style="text-align: center; margin-bottom: 24px;">
-                        <div class="section-tag">Performance Score</div>
-                        <h3>The 5 Elements of Mattress Comparison</h3>
-                    </div>
-                    <div class="chart-canvas-wrapper">
-                        <canvas id="radarChart" width="400" height="400" style="width:100%; height:auto;"></canvas>
-                    </div>
-                </div>
-
-                <!-- Expert & Customer Reviews Section -->
-                <div class="review-grid">
-                    <div class="review-card">
-                        <h3>${brandA} Reviews</h3>
-                        <div class="star-rating">${renderStars(dataA.rating)} Expert Rating</div>
-                        <div><strong>Customer Reviews:</strong> ${dataA.customerRatingCount}+ ratings</div>
-                        <div>😴 Comfort: ${dataA.customerComfort || 4.6}/5 &nbsp; | &nbsp; 💪 Support: ${dataA.customerSupport || 4.5}/5</div>
-                        <div>❄️ Cooling: ${dataA.customerCooling || 4.3}/5</div>
-                        <div class="expert-quote">“${dataA.expertSummary}”</div>
-                        <a href="#" class="btn-outline" style="margin-top: 16px; display: inline-block;">Read More Reviews →</a>
-                    </div>
-                    <div class="review-card">
-                        <h3>${brandB} Reviews</h3>
-                        <div class="star-rating">${renderStars(dataB.rating)} Expert Rating</div>
-                        <div><strong>Customer Reviews:</strong> ${dataB.customerRatingCount}+ ratings</div>
-                        <div>😴 Comfort: ${dataB.customerComfort || 4.7}/5 &nbsp; | &nbsp; 💪 Support: ${dataB.customerSupport || 4.6}/5</div>
-                        <div>❄️ Cooling: ${dataB.customerCooling || 4.4}/5</div>
-                        <div class="expert-quote">“${dataB.expertSummary}”</div>
-                        <a href="#" class="btn-outline" style="margin-top: 16px; display: inline-block;">Read More Reviews →</a>
-                    </div>
-                </div>
-
-                <!-- In-Store Experience CTA -->
-                <div class="cta-showroom">
-                    <h3>Experience the Difference In-Store</h3>
-                    <p>Test both ${brandA} and ${brandB} side-by-side at any SleePare showroom. Feel the materials, check the support, and get expert advice — no pressure, just honest help.</p>
-                    <a href="#" class="btn-primary">Find a Store Near You</a>
-                </div>
-
-                <!-- FAQ Section -->
-                <div style="padding: 40px 0 80px;">
-                    <div style="text-align: center; margin-bottom: 32px;">
-                        <div class="section-tag">Common Questions</div>
-                        <h2>Frequently Asked Questions</h2>
-                    </div>
-                    <div class="faq-list">
-                        <div class="faq-item">
-                            <div class="faq-question">What is the best type of mattress? <span class="faq-icon">+</span></div>
-                            <div class="faq-answer">Memory foam and hybrid offer different benefits; your sleep position matters most. Try in-store to decide.</div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question">Which mattress is better for back pain? <span class="faq-icon">+</span></div>
-                            <div class="faq-answer">Hybrids with zoned support like Saatva or Casper are often recommended by chiropractors.</div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question">How long is the sleep trial? <span class="faq-icon">+</span></div>
-                            <div class="faq-answer">Most brands offer 100-night trials; some provide up to 365 nights (Nest, DreamCloud).</div>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            document.getElementById('comparisonContent').innerHTML = html;
-
-            // Initialize Radar Chart after DOM injection
-            setTimeout(() => {
-                const ctx = document.getElementById('radarChart')?.getContext('2d');
-                if (ctx) {
-                    const scoresA = [dataA.scores.type, dataA.scores.support, dataA.scores.value, dataA.scores.price, dataA.scores.materials];
-                    const scoresB = [dataB.scores.type, dataB.scores.support, dataB.scores.value, dataB.scores.price, dataB.scores.materials];
-                    
-                    new Chart(ctx, {
-                        type: 'radar',
-                        data: {
-                            labels: ['Mattress Type', 'Support & Comfort', 'Overall Value', 'Price', 'Materials & Cooling'],
-                            datasets: [
-                                {
-                                    label: brandA,
-                                    data: scoresA,
-                                    backgroundColor: `${accentA}30`,
-                                    borderColor: accentA,
-                                    borderWidth: 2,
-                                    pointBackgroundColor: accentA,
-                                    pointBorderColor: '#fff',
-                                    pointRadius: 5,
-                                    pointHoverRadius: 7
-                                },
-                                {
-                                    label: brandB,
-                                    data: scoresB,
-                                    backgroundColor: `${accentB}30`,
-                                    borderColor: accentB,
-                                    borderWidth: 2,
-                                    pointBackgroundColor: accentB,
-                                    pointBorderColor: '#fff',
-                                    pointRadius: 5,
-                                    pointHoverRadius: 7
-                                }
-                            ]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: true,
-                            scales: {
-                                r: {
-                                    beginAtZero: true,
-                                    max: 10,
-                                    ticks: {
-                                        stepSize: 2,
-                                        backdropColor: 'transparent'
-                                    },
-                                    grid: {
-                                        color: '#e9ecef'
-                                    }
-                                }
-                            },
-                            plugins: {
-                                tooltip: {
-                                    callbacks: {
-                                        label: (ctx) => `${ctx.dataset.label}: ${ctx.raw}/10`
-                                    }
-                                },
-                                legend: {
-                                    position: 'top',
-                                    labels: {
-                                        font: { family: 'Work Sans', size: 12, weight: '600' },
-                                        usePointStyle: true
-                                    }
-                                }
-                            }
-                        }
-                    });
-                }
-            }, 100);
-
-            // Initialize FAQ accordion
-            document.querySelectorAll('.faq-item').forEach(item => {
-                const question = item.querySelector('.faq-question');
-                if (question) {
-                    question.addEventListener('click', () => {
-                        item.classList.toggle('active');
-                    });
-                }
-            });
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('Detailed comparison page loaded');
-            console.log('URL:', window.location.href);
-            
-            const compareParam = getUrlParameter('compare');
-            console.log('Compare parameter:', compareParam);
-            
-            if (compareParam && compareParam.includes('|')) {
-                const [brand1, brand2] = compareParam.split('|');
-                console.log('Brands to compare:', brand1, brand2);
-                
-                if (brand1 && brand2 && mattressData[brand1] && mattressData[brand2]) {
-                    renderDetailedComparison(brand1, brand2);
-                } else {
-                    document.getElementById('comparisonContent').innerHTML = `
-                        <div class="error-message">
-                            <div class="section-tag">Error</div>
-                            <h2>Invalid Comparison</h2>
-                            <p>The brands you're trying to compare could not be found. Available brands: ${Object.keys(mattressData).join(', ')}</p>
-                            <a href="index.html" class="btn-primary" style="margin-top: 24px;">Back to Comparison Tool</a>
-                        </div>
-                    `;
-                }
-            } else {
-                document.getElementById('comparisonContent').innerHTML = `
-                    <div class="error-message">
-                        <div class="section-tag">Welcome</div>
-                        <h2>No Mattresses Selected</h2>
-                        <p>Use the main comparison tool to select two mattresses and view an in-depth side-by-side analysis.</p>
-                        <a href="index.html" class="btn-primary" style="margin-top: 24px;">Start Comparing</a>
-                    </div>
-                `;
-            }
-        });
-    </script>
+    <script src="js/data.js"></script>
+    <script src="js/detailed.js"></script>
 </body>
-
 </html>
