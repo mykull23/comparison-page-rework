@@ -165,7 +165,7 @@ function renderCompactSlots() {
                     <li><span>Firmness</span><span>${currentModel.firmnessText}</span></li>
                 </ul>
                 <div style="margin-top: 12px;">
-                    <button class="btn-card-details" data-brand="${brand}" style="width: 100%; padding: 8px; font-size: 12px;">View Details</button>
+                    <button class="btn-card-details" data-brand="${brand}" style="width: 100%; padding: 8px; font-size: 12px;">Info</button>
                 </div>
             `;
             slot.classList.add('filled');
