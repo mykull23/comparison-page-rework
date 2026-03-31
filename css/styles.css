@@ -191,6 +191,18 @@ h3 { font-size: 20px; margin-bottom: 16px; }
     background: var(--dark-blue);
 }
 
+/* Simplified CTA button - no hover effect, just click darkening */
+.cta-banner .btn-primary {
+    background: white;
+    color: var(--heading-color);
+    transition: all 0.05s ease;
+}
+
+.cta-banner .btn-primary:active {
+    background: #f0f0f0;
+    transform: scale(0.98);
+}
+
 /* Hero Section */
 .hero {
     padding: 60px 0;
@@ -250,9 +262,10 @@ h3 { font-size: 20px; margin-bottom: 16px; }
 }
 
 .hero-image .image-placeholder {
-    background: solid var(--body-color);
+    background-color: var(--bg-light);
     padding: 48px;
     text-align: center;
+    border-radius: 16px;
 }
 
 .hero-image .image-placeholder img {
@@ -451,52 +464,50 @@ h3 { font-size: 20px; margin-bottom: 16px; }
     margin-bottom: 20px;
 }
 
+/* Update compact slot styling in styles.css */
 .compact-slot {
     flex: 1;
     background: var(--white);
-    border-radius: 16px;
-    padding: 12px;
-    min-height: 130px;
+    border-radius: 20px;
+    padding: 16px;
+    min-height: 280px;
     border: 2px dashed var(--border-light);
     transition: var(--transition);
+    display: flex;
+    flex-direction: column;
 }
 
 .compact-slot.filled {
-    border: 2px solid rgba(44, 95, 138, 0.2);
+    border: 2px solid rgba(44, 95, 138, 0.3);
     background: white;
-}
-
-.compact-slot-empty {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    color: #adb5bd;
-    font-size: 12px;
+    box-shadow: var(--shadow-sm);
 }
 
 .compact-slot-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     padding-bottom: 8px;
     border-bottom: 1px solid var(--border-light);
 }
 
 .brand-logo-compact {
-    width: 60px;
+    width: 80px;
     height: auto;
-    max-height: 24px;
+    max-height: 32px;
     object-fit: contain;
+    object-position: left;
 }
 
 .remove-slot {
     background: transparent;
     border: none;
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
     color: #adb5bd;
+    padding: 0 4px;
+    line-height: 1;
 }
 
 .remove-slot:hover {
@@ -505,17 +516,24 @@ h3 { font-size: 20px; margin-bottom: 16px; }
 
 .compact-feature-list {
     list-style: none;
-    font-size: 11px;
+    font-size: 12px;
+    margin-top: 12px;
 }
 
 .compact-feature-list li {
     display: flex;
     justify-content: space-between;
-    padding: 5px 0;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.compact-feature-list li:last-child {
+    border-bottom: none;
 }
 
 .compact-feature-list li span:first-child {
     color: #8e9aab;
+    font-weight: 500;
 }
 
 .compact-feature-list li span:last-child {
@@ -524,9 +542,56 @@ h3 { font-size: 20px; margin-bottom: 16px; }
 }
 
 .compact-vs {
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 800;
     color: var(--primary);
+    background: rgba(94, 0, 255, 0.1);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.compact-feature-list {
+    list-style: none;
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+.compact-feature-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.compact-feature-list li:last-child {
+    border-bottom: none;
+}
+
+.compact-feature-list li span:first-child {
+    color: #8e9aab;
+    font-weight: 500;
+}
+
+.compact-feature-list li span:last-child {
+    font-weight: 600;
+    color: var(--heading-color);
+}
+
+.compact-vs {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--primary);
+    background: rgba(94, 0, 255, 0.1);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
 
 /* Score Cards */
@@ -568,44 +633,57 @@ h3 { font-size: 20px; margin-bottom: 16px; }
     border-bottom: none;
 }
 
-/* Top Comparisons - NO PURPLE ON HOVER */
+/* Top Comparisons - Updated Styling */
 .comparisons-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
 }
 
 .comparison-tag {
     background: var(--white);
-    padding: 12px 16px;
-    border-radius: 50px;
-    text-align: center;
+    padding: 16px 20px;
+    border-radius: 60px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: var(--transition);
     border: 1px solid var(--border-light);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
+    gap: 16px;
 }
 
 .comparison-tag .logo-wrapper {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     flex: 1;
-    justify-content: center;
+}
+
+.comparison-tag .logo-wrapper.left {
+    justify-content: flex-start;
+}
+
+.comparison-tag .logo-wrapper.right {
+    justify-content: flex-end;
 }
 
 .comparison-tag .vs-text {
-    font-weight: 600;
-    color: var(--accent-blue);
-    font-size: 12px;
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 18px;
+    letter-spacing: 1px;
+    background: rgba(94, 0, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 40px;
+    min-width: 60px;
+    text-align: center;
 }
 
 .comparison-tag:hover {
     background: var(--accent-blue);
     border-color: var(--accent-blue);
+    transform: translateY(-2px);
 }
 
 .comparison-tag:hover .logo-wrapper span {
@@ -613,19 +691,20 @@ h3 { font-size: 20px; margin-bottom: 16px; }
 }
 
 .comparison-tag:hover .vs-text {
-    color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
 }
 
 .brand-logo-tag {
-    width: 45px;
+    width: 50px;
     height: auto;
-    max-height: 22px;
+    max-height: 28px;
     object-fit: contain;
 }
 
 .logo-wrapper span {
-    font-size: 13px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 600;
     color: var(--heading-color);
 }
 
@@ -738,16 +817,6 @@ h3 { font-size: 20px; margin-bottom: 16px; }
     max-width: 500px;
     margin: 0 auto 20px;
     font-size: 14px;
-}
-
-.cta-banner .btn-primary {
-    background: white;
-    color: var(--heading-color);
-}
-
-.cta-banner .btn-primary:hover {
-    background: linear-gradient(135deg, #5E00FF 0%, #C800FF 100%);
-    color: white;
 }
 
 /* Modal */
@@ -894,6 +963,40 @@ h3 { font-size: 20px; margin-bottom: 16px; }
     font-weight: 600;
 }
 
+.google-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.google-rating img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.google-rating span {
+    font-weight: 600;
+    color: #11173C;
+}
+
+.google-rating .stars {
+    color: #FFB800;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.google-rating .review-count {
+    color: #5a6874;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.score-cards-container {
+    display: none !important;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .comparison-layout {
@@ -917,6 +1020,8 @@ h3 { font-size: 20px; margin-bottom: 16px; }
     .comparisons-grid { grid-template-columns: 1fr; }
     .section { padding: 40px 0; }
     .container { padding: 0 20px; }
-    .comparison-tag { padding: 10px 12px; }
-    .logo-wrapper span { font-size: 11px; }
+    .comparison-tag { padding: 12px 16px; }
+    .logo-wrapper span { font-size: 12px; }
+    .comparison-tag .vs-text { font-size: 14px; min-width: 50px; }
+    .brand-logo-tag { width: 40px; }
 }

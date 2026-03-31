@@ -157,13 +157,18 @@ function renderCompactSlots() {
                     <img src="${data.logo}" alt="${brand}" class="brand-logo-compact" onerror="this.style.display='none'">
                     <button class="remove-slot" data-slot="${slotName}">×</button>
                 </div>
-                <div style="font-size: 12px; font-weight: 600; margin-bottom: 6px;">${currentModel.name}</div>
-                <ul class="compact-feature-list">
+                <div style="text-align: center; margin: 12px 0 8px 0;">
+                    <div style="font-size: 20px; font-weight: 800; color: var(--primary);">${data.rating}<span style="font-size: 14px; color: #8e9aab;">/5</span></div>
+                    <div style="font-size: 12px; color: #FFB800; margin-top: 2px;">${'★'.repeat(Math.floor(data.rating))}${'☆'.repeat(5 - Math.floor(data.rating))}</div>
+                </div>
+                <div style="font-size: 14px; font-weight: 700; text-align: center; margin-bottom: 8px;">${currentModel.name}</div>
+                <ul class="compact-feature-list" style="margin-top: 8px;">
                     <li><span>Type</span><span>${currentModel.type.split('/')[0]}</span></li>
                     <li><span>Firmness</span><span>${currentModel.firmnessText}</span></li>
-                    <li><span>Price</span><span>${currentModel.price}</span></li>
                 </ul>
-                <button class="btn-card-details" data-brand="${brand}" style="width:100%; margin-top:8px; padding:4px; font-size:11px;">Details</button>
+                <div style="margin-top: 12px;">
+                    <button class="btn-card-details" data-brand="${brand}" style="width: 100%; padding: 8px; font-size: 12px;">Info</button>
+                </div>
             `;
             slot.classList.add('filled');
             slot.querySelector('.remove-slot')?.addEventListener('click', () => {
@@ -177,7 +182,7 @@ function renderCompactSlots() {
             });
             slot.querySelector('.btn-card-details')?.addEventListener('click', () => openModal(brand));
         } else {
-            slot.innerHTML = `<div class="compact-slot-empty"><span>Select mattress</span></div>`;
+            slot.innerHTML = `<div class="compact-slot-empty"><span>Select a mattress to compare</span></div>`;
             slot.classList.remove('filled');
         }
     }
@@ -187,7 +192,7 @@ function renderCompactSlots() {
     
     const scoreContainer = document.getElementById('scoreCardsContainer');
     if (scoreContainer) {
-        scoreContainer.style.display = (selectedSlotA && selectedSlotB) ? 'grid' : 'none';
+        scoreContainer.style.display = 'none';
     }
 }
 
@@ -272,7 +277,10 @@ function openModal(brand) {
             <h4>Key Features</h4>
             <p style="font-size: 13px;">${currentModel.keyFeatures.join(' • ')}</p>
         </div>
-        <button class="btn-outline" style="width:100%;" onclick="document.getElementById('mattressModal').style.display='none';">Close</button>
+        <div style="display: flex; gap: 12px; margin-top: 20px;">
+            <a href="https://www.sleepare.com/shop/" class="btn-primary" style="flex: 1; text-align: center;" target="_blank">Shop ${brand} →</a>
+            <button class="btn-outline" onclick="document.getElementById('mattressModal').style.display='none';">Close</button>
+        </div>
     `;
     modal.style.display = 'block';
 }
@@ -338,7 +346,10 @@ function openElementModal(elementId) {
         <div style="margin-bottom: 24px; line-height: 1.6;">
             ${el.description}
         </div>
-        <button class="btn-outline" style="width:100%;" onclick="document.getElementById('mattressModal').style.display='none';">Close</button>
+        <div style="display: flex; gap: 12px;">
+            <a href="https://www.sleepare.com/mattress-stores/" class="btn-primary" style="flex: 1; text-align: center;" target="_blank">Visit a Showroom</a>
+            <button class="btn-outline" onclick="document.getElementById('mattressModal').style.display='none';">Close</button>
+        </div>
     `;
     modal.style.display = 'block';
 }
@@ -353,14 +364,14 @@ function renderTopComparisons() {
         if (!brand1 || !brand2) return '';
         return `
             <div class="comparison-tag" data-m1="${comp.brand1}" data-m2="${comp.brand2}">
-                <div class="logo-wrapper">
+                <div class="logo-wrapper left">
                     <img src="${brand1.logo}" alt="${comp.brand1}" class="brand-logo-tag" onerror="this.style.display='none'">
                     <span>${comp.brand1}</span>
                 </div>
                 <span class="vs-text">VS</span>
-                <div class="logo-wrapper">
-                    <img src="${brand2.logo}" alt="${comp.brand2}" class="brand-logo-tag" onerror="this.style.display='none'">
+                <div class="logo-wrapper right">
                     <span>${comp.brand2}</span>
+                    <img src="${brand2.logo}" alt="${comp.brand2}" class="brand-logo-tag" onerror="this.style.display='none'">
                 </div>
             </div>
         `;

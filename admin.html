@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SleePare | Admin Panel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-light);
+        }
+        
+        .admin-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .admin-tab {
+            padding: 12px 24px;
+            background: transparent;
+            border: none;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            color: var(--body-color);
+            transition: var(--transition);
+        }
+        
+        .admin-tab.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .admin-panel {
+            display: none;
+        }
+        
+        .admin-panel.active {
+            display: block;
+        }
+        
+        .mattress-editor {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 32px;
+            border: 1px solid var(--border-light);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--heading-color);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 14px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .model-item {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-light);
+        }
+        
+        .model-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .brand-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .brand-item {
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .brand-item-info {
+            flex: 1;
+        }
+        
+        .brand-item-actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .status-message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .json-preview {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .btn-export {
+            margin-top: 16px;
+            background: var(--accent-blue);
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .admin-header {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>Mattress Management Dashboard</h1>
+            <a href="index.html" class="btn-outline">← Back to Site</a>
+        </div>
+        
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="edit">Edit Mattresses</button>
+            <button class="admin-tab" data-tab="add">Add Mattress</button>
+            <button class="admin-tab" data-tab="export">Export/Import</button>
+        </div>
+        
+        <div id="statusMessage" class="status-message"></div>
+        
+        <!-- Edit Panel -->
+        <div class="admin-panel active" id="editPanel">
+            <div class="mattress-editor">
+                <h3>Select Mattress to Edit</h3>
+                <select id="brandSelect" style="width: 100%; padding: 12px; margin-bottom: 20px;">
+                    <option value="">-- Select a mattress brand --</option>
+                </select>
+                
+                <div id="editForm" style="display: none;"></div>
+            </div>
+        </div>
+        
+        <!-- Add Panel -->
+        <div class="admin-panel" id="addPanel">
+            <div class="mattress-editor">
+                <h3>Add New Mattress Brand</h3>
+                <form id="addMattressForm">
+                    <div class="form-group">
+                        <label>Brand Name *</label>
+                        <input type="text" id="newBrandName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Logo URL *</label>
+                        <input type="text" id="newLogo" value="assets/images/brands/" required>
+                        <small>e.g., assets/images/brands/newbrand-logo.png</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Overall Rating (0-5) *</label>
+                        <input type="number" id="newRating" step="0.1" min="0" max="5" value="4.5" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Warranty</label>
+                        <input type="text" id="newWarranty" value="10 years">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Trial Period</label>
+                        <input type="text" id="newTrial" value="100 nights">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Expert Summary</label>
+                        <textarea id="newExpertSummary" rows="3"></textarea>
+                    </div>
+                    
+                    <h4>Models</h4>
+                    <div id="modelsContainer">
+                        <div class="model-item">
+                            <div class="model-header">
+                                <strong>Model 1</strong>
+                                <button type="button" class="btn-danger remove-model" style="padding: 4px 12px;">Remove</button>
+                            </div>
+                            <div class="form-group">
+                                <label>Model Name *</label>
+                                <input type="text" class="model-name" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <select class="model-type">
+                                        <option value="Memory Foam">Memory Foam</option>
+                                        <option value="Hybrid">Hybrid</option>
+                                        <option value="Latex">Latex</option>
+                                        <option value="Hybrid / Latex">Hybrid / Latex</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Firmness (1-10)</label>
+                                    <input type="number" class="model-firmness" step="0.5" min="1" max="10" value="6">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Firmness Text</label>
+                                <input type="text" class="model-firmness-text" value="Medium">
+                            </div>
+                            <div class="form-group">
+                                <label>Price</label>
+                                <input type="text" class="model-price" value="$1,000 – $2,000">
+                            </div>
+                            <div class="form-group">
+                                <label>Price Value (numeric)</label>
+                                <input type="number" class="model-price-value" value="1500">
+                            </div>
+                            <div class="form-group">
+                                <label>Best For</label>
+                                <input type="text" class="model-best-for" value="All sleepers">
+                            </div>
+                            <div class="form-group">
+                                <label>Sleep Positions (comma separated)</label>
+                                <input type="text" class="model-sleep-positions" value="back, side">
+                            </div>
+                            <div class="form-group">
+                                <label>Key Features (comma separated)</label>
+                                <input type="text" class="model-features" value="Quality, Comfort, Support">
+                            </div>
+                            <div class="form-group">
+                                <label>Tagline</label>
+                                <input type="text" class="model-tagline" value="Premium comfort mattress">
+                            </div>
+                            <div class="form-group">
+                                <label>Cooling Technology</label>
+                                <input type="text" class="model-cooling" value="Breathable design">
+                            </div>
+                            <div class="form-group">
+                                <label>Motion Isolation</label>
+                                <select class="model-motion">
+                                    <option value="Poor">Poor</option>
+                                    <option value="Good">Good</option>
+                                    <option value="Very Good">Very Good</option>
+                                    <option value="Excellent">Excellent</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Edge Support</label>
+                                <select class="model-edge">
+                                    <option value="Poor">Poor</option>
+                                    <option value="Good">Good</option>
+                                    <option value="Very Good">Very Good</option>
+                                    <option value="Excellent">Excellent</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="button" id="addModelBtn" class="btn-outline" style="margin: 16px 0;">+ Add Another Model</button>
+                    
+                    <button type="submit" class="btn-primary">Save New Mattress</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Export Panel -->
+        <div class="admin-panel" id="exportPanel">
+            <div class="mattress-editor">
+                <h3>Export Current Data</h3>
+                <button id="exportBtn" class="btn-primary btn-export">Download mattresses.json</button>
+                
+                <h3 style="margin-top: 32px;">Import Data</h3>
+                <input type="file" id="importFile" accept=".json">
+                <button id="importBtn" class="btn-primary" style="margin-top: 12px;">Import JSON</button>
+                
+                <h3 style="margin-top: 32px;">JSON Preview</h3>
+                <div id="jsonPreview" class="json-preview">Loading data...</div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/data.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
