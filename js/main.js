@@ -107,7 +107,6 @@ function renderMattressGrid() {
                 renderMattressGrid();
                 if (selectedSlotA === brand || selectedSlotB === brand) {
                     renderCompactSlots();
-                    updateScoreCards();
                 }
                 saveComparisonState();
             }
@@ -140,7 +139,6 @@ function addToComparison(brand) {
     saveComparisonState();
     renderCompactSlots();
     renderMattressGrid();
-    updateScoreCards();
     updateDeepComparisonButton();
 }
 
@@ -167,7 +165,7 @@ function renderCompactSlots() {
                     <li><span>Firmness</span><span>${currentModel.firmnessText}</span></li>
                 </ul>
                 <div style="margin-top: 12px;">
-                    <button class="btn-card-details" data-brand="${brand}" style="width: 100%; padding: 8px; font-size: 12px;">Info</button>
+                    <button class="btn-card-details" data-brand="${brand}" style="width: 100%; padding: 8px; font-size: 12px;">View Details</button>
                 </div>
             `;
             slot.classList.add('filled');
@@ -177,7 +175,6 @@ function renderCompactSlots() {
                 saveComparisonState();
                 renderCompactSlots();
                 renderMattressGrid();
-                updateScoreCards();
                 updateDeepComparisonButton();
             });
             slot.querySelector('.btn-card-details')?.addEventListener('click', () => openModal(brand));
@@ -189,38 +186,6 @@ function renderCompactSlots() {
     
     renderSlot(slotA, selectedSlotA, 'A');
     renderSlot(slotB, selectedSlotB, 'B');
-    
-    const scoreContainer = document.getElementById('scoreCardsContainer');
-    if (scoreContainer) {
-        scoreContainer.style.display = 'none';
-    }
-}
-
-function updateScoreCards() {
-    const scoreCardA = document.getElementById('scoreCardA');
-    const scoreCardB = document.getElementById('scoreCardB');
-    
-    function renderScoreCard(card, brand) {
-        if (brand && window.mattressData[brand]) {
-            const currentModel = getCurrentModel(brand);
-            const data = window.mattressData[brand];
-            card.innerHTML = `
-                <img src="${data.logo}" alt="${brand}" class="brand-logo-modal" style="margin-bottom: 6px;" onerror="this.style.display='none'">
-                <div style="font-size: 12px; font-weight: 600; margin-bottom: 2px;">${currentModel.name}</div>
-                <div class="score-value">${data.rating}/5</div>
-                <div class="score-label">Overall Rating</div>
-                <div style="margin: 8px 0;">
-                    <div class="score-detail-item"><span>Type</span><span>${currentModel.type.split('/')[0]}</span></div>
-                    <div class="score-detail-item"><span>Firmness</span><span>${currentModel.firmnessText}</span></div>
-                </div>
-            `;
-        } else {
-            card.innerHTML = `<div class="score-value">—</div><div class="score-label">Select mattress</div>`;
-        }
-    }
-    
-    renderScoreCard(scoreCardA, selectedSlotA);
-    renderScoreCard(scoreCardB, selectedSlotB);
 }
 
 function updateDeepComparisonButton() {
@@ -245,7 +210,6 @@ function swapComparison() {
         saveComparisonState();
         renderCompactSlots();
         renderMattressGrid();
-        updateScoreCards();
         updateDeepComparisonButton();
     }
 }
@@ -258,28 +222,53 @@ function openModal(brand) {
     if (!data) return;
     
     modalContent.innerHTML = `
-        <div style="text-align: center; margin-bottom: 20px;">
-            <img src="${data.logo}" alt="${brand}" class="brand-logo-modal" onerror="this.style.display='none'">
-            <div style="font-size: 18px; font-weight: 700; margin-top: 4px;">${currentModel.name}</div>
-            <p style="color: #5a6874; font-size: 13px;">${currentModel.tagline}</p>
-            <div style="margin-top: 6px;"><span style="font-size: 24px; font-weight: 700;">${data.rating} ★</span> / 5</div>
-        </div>
-        <div style="margin-bottom: 16px;">
-            <h4>Specs</h4>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <div style="background: #f8f9fa; padding: 8px; border-radius: 10px;"><strong>Type</strong><br>${currentModel.type.split('/')[0]}</div>
-                <div style="background: #f8f9fa; padding: 8px; border-radius: 10px;"><strong>Firmness</strong><br>${currentModel.firmnessText}</div>
-                <div style="background: #f8f9fa; padding: 8px; border-radius: 10px;"><strong>Price</strong><br>${currentModel.price}</div>
-                <div style="background: #f8f9fa; padding: 8px; border-radius: 10px;"><strong>Best For</strong><br>${currentModel.bestFor}</div>
+        <div style="text-align: center; margin-bottom: 24px;">
+            <img src="${data.logo}" alt="${brand}" class="brand-logo-modal" onerror="this.style.display='none'" style="max-width: 140px; max-height: 48px;">
+            <div style="font-size: 22px; font-weight: 700; margin-top: 16px;">${currentModel.name}</div>
+            <div style="margin-top: 8px;">
+                <span style="font-size: 32px; font-weight: 800; color: var(--primary);">${data.rating}</span><span style="font-size: 16px;">/5</span>
+                <div style="color: #FFB800; margin-top: 4px;">${'★'.repeat(Math.floor(data.rating))}${'☆'.repeat(5 - Math.floor(data.rating))}</div>
             </div>
         </div>
-        <div style="margin-bottom: 16px;">
+        <div style="margin-bottom: 20px;">
+            <p style="color: #5a6874; text-align: center; font-style: italic;">${currentModel.tagline}</p>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <h4>Key Specifications</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px;">
+                <div style="background: var(--bg-light); padding: 12px; border-radius: 12px;">
+                    <strong>Type</strong><br>${currentModel.type}
+                </div>
+                <div style="background: var(--bg-light); padding: 12px; border-radius: 12px;">
+                    <strong>Firmness</strong><br>${currentModel.firmnessText} (${currentModel.firmness}/10)
+                </div>
+                <div style="background: var(--bg-light); padding: 12px; border-radius: 12px;">
+                    <strong>Best For</strong><br>${currentModel.bestFor}
+                </div>
+                <div style="background: var(--bg-light); padding: 12px; border-radius: 12px;">
+                    <strong>Price (Queen)</strong><br>${currentModel.price}
+                </div>
+            </div>
+        </div>
+        <div style="margin-bottom: 20px;">
             <h4>Key Features</h4>
-            <p style="font-size: 13px;">${currentModel.keyFeatures.join(' • ')}</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;">
+                ${currentModel.keyFeatures.map(f => `<span style="background: rgba(44, 95, 138, 0.1); padding: 6px 12px; border-radius: 20px; font-size: 12px;">${f}</span>`).join('')}
+            </div>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <h4>Additional Details</h4>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 8px 0; border-bottom: 1px solid var(--border-light);"><strong>Cooling:</strong> ${currentModel.cooling}</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid var(--border-light);"><strong>Motion Isolation:</strong> ${currentModel.motionIsolation}</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid var(--border-light);"><strong>Edge Support:</strong> ${currentModel.edgeSupport}</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid var(--border-light);"><strong>Trial:</strong> ${data.trial || "100 nights"}</li>
+                <li style="padding: 8px 0;"><strong>Warranty:</strong> ${data.warranty || "10 years"}</li>
+            </ul>
         </div>
         <div style="display: flex; gap: 12px; margin-top: 20px;">
             <a href="https://www.sleepare.com/shop/" class="btn-primary" style="flex: 1; text-align: center;" target="_blank">Shop ${brand} →</a>
-            <button class="btn-outline" onclick="document.getElementById('mattressModal').style.display='none';">Close</button>
+            <a href="https://www.sleepare.com/mattress-stores/" class="btn-outline" style="flex: 1; text-align: center;" target="_blank">Find a Store</a>
         </div>
     `;
     modal.style.display = 'block';
@@ -329,7 +318,7 @@ function openElementModal(elementId) {
                     <tr><td><strong>Hybrid</strong></td><td>Under $1,500 - $2,200+</td></tr>
                     <tr><td><strong>Latex</strong></td><td>Under $1,500 - $2,500+</td></tr>
                     <tr><td><strong>Innerspring</strong></td><td>Under $700 - $1,200+</td></tr>
-                </table>
+                 </table>
                 <p style="font-size: 12px; margin-top: 12px; color: #666;">*Queen size prices shown. Premium models may cost more.</p>
             </div>`
         }
@@ -387,8 +376,13 @@ function renderTopComparisons() {
                 saveComparisonState();
                 renderCompactSlots();
                 renderMattressGrid();
-                updateScoreCards();
                 updateDeepComparisonButton();
+                
+                // Scroll to comparison section
+                const comparisonSection = document.querySelector('.comparison-layout');
+                if (comparisonSection) {
+                    comparisonSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             }
         });
     });

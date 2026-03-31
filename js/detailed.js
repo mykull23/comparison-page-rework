@@ -70,9 +70,6 @@ function renderDetailedComparison(brandA, brandB, modelAIndex = 0, modelBIndex =
     const priceA = parseInt(modelA.price.replace(/[^0-9]/g, '')) || 1500;
     const priceB = parseInt(modelB.price.replace(/[^0-9]/g, '')) || 1500;
     
-    // Determine which mattress has better value (lower price with similar features)
-    const betterValue = priceA < priceB ? brandA : (priceB < priceA ? brandB : "Similar");
-    
     const html = `
         <!-- Header with Logos -->
         <div class="comparison-header">
@@ -113,8 +110,7 @@ function renderDetailedComparison(brandA, brandB, modelAIndex = 0, modelBIndex =
             </div>
             <table class="spec-table">
                 <thead>
-                    <tr><th>Category</th><th>${brandA}</th><th>${brandB}</th></tr>
-                </thead>
+                    <tr><th>Category</th><th>${brandA}</th><th>${brandB}</th>                </thead>
                 <tbody>
                     <tr>
                         <td><strong>Overall Rating</strong></td>
@@ -178,9 +174,8 @@ function renderDetailedComparison(brandA, brandB, modelAIndex = 0, modelBIndex =
                 <div class="feature-list">
                     ${modelA.keyFeatures.slice(0, 4).map(f => `<span class="feature-tag">${f}</span>`).join('')}
                 </div>
-                <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap;">
-                    <a href="https://www.sleepare.com/shop/" class="btn-primary" style="flex: 1; text-align: center;" target="_blank">Shop ${brandA} →</a>
-                    <button class="btn-outline" onclick="openModal('${brandA}')" style="flex: 1;">View Details</button>
+                <div style="margin-top: 20px;">
+                    <a href="https://www.sleepare.com/shop/" class="btn-primary" style="width: 100%; text-align: center;" target="_blank">Shop ${brandA} →</a>
                 </div>
             </div>
             <div class="brand-card">
@@ -189,9 +184,8 @@ function renderDetailedComparison(brandA, brandB, modelAIndex = 0, modelBIndex =
                 <div class="feature-list">
                     ${modelB.keyFeatures.slice(0, 4).map(f => `<span class="feature-tag">${f}</span>`).join('')}
                 </div>
-                <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap;">
-                    <a href="https://www.sleepare.com/shop/" class="btn-primary" style="flex: 1; text-align: center;" target="_blank">Shop ${brandB} →</a>
-                    <button class="btn-outline" onclick="openModal('${brandB}')" style="flex: 1;">View Details</button>
+                <div style="margin-top: 20px;">
+                    <a href="https://www.sleepare.com/shop/" class="btn-primary" style="width: 100%; text-align: center;" target="_blank">Shop ${brandB} →</a>
                 </div>
             </div>
         </div>
@@ -263,28 +257,53 @@ function openModal(brand) {
     if (!data) return;
     
     modalContent.innerHTML = `
-        <div style="text-align: center; margin-bottom: 20px;">
-            <img src="${data.logo}" alt="${brand}" class="brand-logo-modal" onerror="this.style.display='none'">
-            <div style="font-size: 18px; font-weight: 700; margin-top: 4px;">${currentModel.name}</div>
-            <p style="color: #5a6874; font-size: 13px;">${currentModel.tagline}</p>
-            <div style="margin-top: 6px;"><span style="font-size: 24px; font-weight: 700;">${data.rating} ★</span> / 5</div>
-        </div>
-        <div style="margin-bottom: 16px;">
-            <h4>Specs</h4>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <div style="background: #f8f9fa; padding: 8px; border-radius: 10px;"><strong>Type</strong><br>${currentModel.type.split('/')[0]}</div>
-                <div style="background: #f8f9fa; padding: 8px; border-radius: 10px;"><strong>Firmness</strong><br>${currentModel.firmnessText}</div>
-                <div style="background: #f8f9fa; padding: 8px; border-radius: 10px;"><strong>Price</strong><br>${currentModel.price}</div>
-                <div style="background: #f8f9fa; padding: 8px; border-radius: 10px;"><strong>Best For</strong><br>${currentModel.bestFor}</div>
+        <div style="text-align: center; margin-bottom: 24px;">
+            <img src="${data.logo}" alt="${brand}" class="brand-logo-modal" onerror="this.style.display='none'" style="max-width: 140px; max-height: 48px;">
+            <div style="font-size: 22px; font-weight: 700; margin-top: 16px;">${currentModel.name}</div>
+            <div style="margin-top: 8px;">
+                <span style="font-size: 32px; font-weight: 800; color: var(--primary);">${data.rating}</span><span style="font-size: 16px;">/5</span>
+                <div style="color: #FFB800; margin-top: 4px;">${'★'.repeat(Math.floor(data.rating))}${'☆'.repeat(5 - Math.floor(data.rating))}</div>
             </div>
         </div>
-        <div style="margin-bottom: 16px;">
+        <div style="margin-bottom: 20px;">
+            <p style="color: #5a6874; text-align: center; font-style: italic;">${currentModel.tagline}</p>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <h4>Key Specifications</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px;">
+                <div style="background: var(--bg-light); padding: 12px; border-radius: 12px;">
+                    <strong>Type</strong><br>${currentModel.type}
+                </div>
+                <div style="background: var(--bg-light); padding: 12px; border-radius: 12px;">
+                    <strong>Firmness</strong><br>${currentModel.firmnessText} (${currentModel.firmness}/10)
+                </div>
+                <div style="background: var(--bg-light); padding: 12px; border-radius: 12px;">
+                    <strong>Best For</strong><br>${currentModel.bestFor}
+                </div>
+                <div style="background: var(--bg-light); padding: 12px; border-radius: 12px;">
+                    <strong>Price (Queen)</strong><br>${currentModel.price}
+                </div>
+            </div>
+        </div>
+        <div style="margin-bottom: 20px;">
             <h4>Key Features</h4>
-            <p style="font-size: 13px;">${currentModel.keyFeatures.join(' • ')}</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;">
+                ${currentModel.keyFeatures.map(f => `<span style="background: rgba(44, 95, 138, 0.1); padding: 6px 12px; border-radius: 20px; font-size: 12px;">${f}</span>`).join('')}
+            </div>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <h4>Additional Details</h4>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 8px 0; border-bottom: 1px solid var(--border-light);"><strong>Cooling:</strong> ${currentModel.cooling}</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid var(--border-light);"><strong>Motion Isolation:</strong> ${currentModel.motionIsolation}</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid var(--border-light);"><strong>Edge Support:</strong> ${currentModel.edgeSupport}</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid var(--border-light);"><strong>Trial:</strong> ${data.trial || "100 nights"}</li>
+                <li style="padding: 8px 0;"><strong>Warranty:</strong> ${data.warranty || "10 years"}</li>
+            </ul>
         </div>
         <div style="display: flex; gap: 12px; margin-top: 20px;">
             <a href="https://www.sleepare.com/shop/" class="btn-primary" style="flex: 1; text-align: center;" target="_blank">Shop ${brand} →</a>
-            <button class="btn-outline" onclick="document.getElementById('mattressModal').style.display='none';">Close</button>
+            <a href="https://www.sleepare.com/mattress-stores/" class="btn-outline" style="flex: 1; text-align: center;" target="_blank">Find a Store</a>
         </div>
     `;
     modal.style.display = 'block';
@@ -325,7 +344,7 @@ function initializeDetailedPage() {
     }
 }
 
-// Make openModal available globally
+// Make openModal available globally for detailed page
 window.openModal = openModal;
 
 document.addEventListener('DOMContentLoaded', async () => {

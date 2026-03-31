@@ -23,12 +23,12 @@
             border-radius: 20px;
             padding: 24px;
             border: 1px solid var(--border-light);
-            transition: var(--transition);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
         
         .brand-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
         }
         
         .spec-table {
@@ -114,6 +114,43 @@
             background: linear-gradient(135deg, #5E00FF 0%, #C800FF 100%);
             width: 0%;
         }
+        
+        /* Modal for detailed page */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 24px;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        
+        .modal-close {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 16px;
+        }
+        
+        .brand-logo-modal {
+            width: 100px;
+            height: auto;
+            max-height: 32px;
+            object-fit: contain;
+            margin: 0 auto 12px;
+        }
     </style>
 </head>
 <body>
@@ -138,7 +175,14 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M19 12H5M12 19L5 12L12 5"/></svg>
     </a>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <!-- Modal for detailed page -->
+    <div id="mattressModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
     <script src="js/data.js"></script>
     <script src="js/detailed.js"></script>
 </body>
