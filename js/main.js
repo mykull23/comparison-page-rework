@@ -353,15 +353,11 @@ function renderTopComparisons() {
         if (!brand1 || !brand2) return '';
         return `
             <div class="comparison-tag" data-m1="${comp.brand1}" data-m2="${comp.brand2}">
-                <div class="logo-wrapper left">
-                    <img src="${brand1.logo}" alt="${comp.brand1}" class="brand-logo-tag" onerror="this.style.display='none'">
-                    <span>${comp.brand1}</span>
-                </div>
+                <span>${comp.brand1}</span>
+                <img src="${brand1.logo}" alt="${comp.brand1}" class="brand-logo-tag" onerror="this.style.display='none'">
                 <span class="vs-text">VS</span>
-                <div class="logo-wrapper right">
-                    <span>${comp.brand2}</span>
-                    <img src="${brand2.logo}" alt="${comp.brand2}" class="brand-logo-tag" onerror="this.style.display='none'">
-                </div>
+                <img src="${brand2.logo}" alt="${comp.brand2}" class="brand-logo-tag" onerror="this.style.display='none'">
+                <span>${comp.brand2}</span>
             </div>
         `;
     }).join('');
@@ -378,7 +374,6 @@ function renderTopComparisons() {
                 renderMattressGrid();
                 updateDeepComparisonButton();
                 
-                // Scroll to comparison section
                 const comparisonSection = document.querySelector('.comparison-layout');
                 if (comparisonSection) {
                     comparisonSection.scrollIntoView({ behavior: 'smooth', block: 'start' });

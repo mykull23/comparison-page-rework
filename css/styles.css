@@ -162,10 +162,6 @@ h3 { font-size: 20px; margin-bottom: 16px; }
     font-family: 'Work Sans', sans-serif;
 }
 
-.btn-card-compare:hover {
-    background: var(--dark-blue);
-}
-
 .btn-card-details {
     background: transparent;
     border: 1px solid var(--border-light);
@@ -202,9 +198,6 @@ h3 { font-size: 20px; margin-bottom: 16px; }
     font-family: 'Work Sans', sans-serif;
 }
 
-.btn-deep-comparison:hover {
-    background: var(--dark-blue);
-}
 
 /* CTA Banner Button - Subtle styling */
 .cta-banner .btn-primary {
@@ -613,28 +606,50 @@ h3 { font-size: 20px; margin-bottom: 16px; }
 
 /* Top Comparisons */
 .comparisons-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 16px;
 }
 
 .comparison-tag {
     background: var(--white);
-    padding: 16px 20px;
+    padding: 12px 20px;
     border-radius: 60px;
     cursor: pointer;
-    transition: transform 0.2s ease, background 0.2s ease;
+    transition: transform 0.2s ease;
     border: 1px solid var(--border-light);
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+    gap: 12px;
 }
 
 .comparison-tag:hover {
     transform: scale(1.02);
-    background: var(--accent-blue);
+    background: white;
     border-color: var(--accent-blue);
+}
+
+.brand-logo-tag {
+    width: 32px;
+    height: auto;
+    max-height: 24px;
+    object-fit: contain;
+}
+
+.comparison-tag span {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--heading-color);
+}
+
+.comparison-tag .vs-text {
+    font-weight: 800;
+    color: var(--primary);
+    background: rgba(94, 0, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 40px;
+    font-size: 14px;
 }
 
 .comparison-tag:active {
@@ -673,8 +688,8 @@ h3 { font-size: 20px; margin-bottom: 16px; }
 }
 
 .comparison-tag:hover .vs-text {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
+    color: var(--primary);
+    background: rgba(94, 0, 255, 0.1);
 }
 
 .brand-logo-tag {
