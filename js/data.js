@@ -1,20 +1,23 @@
 // ============================================
-// MATTRESS DATA LOADER
-// Single source of truth from JSON file
+// MATTRESS DATA LOADER - WordPress REST API
 // ============================================
 
 window.mattressData = {};
 window.topComparisons = [];
 window.dataLoaded = false;
-window.currentModels = {}; // Track selected model per brand
+window.currentModels = {};
 
 async function loadMattressData() {
     try {
-        const response = await fetch('data/mattresses.json');
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const response = await fetch('https://staging.sleepare.com/wp-json/sleepare/v1/mattresses');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const data = await response.json();
         window.mattressData = data.mattresses;
-        window.topComparisons = data.topComparisons;
+        window.topComparisons = data.topComparisons || [];
         
         // Initialize default model selection (first model for each brand)
         Object.keys(window.mattressData).forEach(brand => {
@@ -24,10 +27,10 @@ async function loadMattressData() {
         });
         
         window.dataLoaded = true;
-        console.log('✅ Mattress data loaded:', Object.keys(window.mattressData).length, 'brands');
+        console.log('✅ Mattress data loaded from WordPress:', Object.keys(window.mattressData).length, 'brands');
         return true;
     } catch (error) {
-        console.error('❌ Error loading JSON:', error);
+        console.error('❌ Error loading from WordPress API:', error);
         return false;
     }
 }
@@ -37,23 +40,7 @@ function getCurrentModel(brand) {
     const brandData = window.mattressData[brand];
     if (!brandData) return null;
     if (!brandData.models || brandData.models.length === 0) {
-        // Convert legacy format
-        return {
-            name: brand,
-            type: brandData.type || "Hybrid",
-            typeCategory: brandData.typeCategory || "hybrid",
-            firmness: brandData.firmness || 6,
-            firmnessText: brandData.firmnessText || "Medium",
-            price: brandData.price || "$1,000 – $2,000",
-            priceValue: brandData.priceValue || 1500,
-            bestFor: brandData.bestFor || "All sleepers",
-            sleepPosition: brandData.sleepPosition || ["back", "side", "combination"],
-            keyFeatures: brandData.keyFeatures || ["Quality", "Comfort", "Support"],
-            tagline: brandData.tagline || "Premium comfort",
-            cooling: brandData.cooling || "Breathable design",
-            motionIsolation: brandData.motionIsolation || "Good",
-            edgeSupport: brandData.edgeSupport || "Good"
-        };
+        return null;
     }
     return brandData.models[window.currentModels[brand] || 0];
 }
